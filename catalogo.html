@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Produtos | A&E Painéis</title>
+    <meta name="description" content="Catálogo completo de produtos A&E Painéis: barramentos elétricos, painéis de comando, quadros de distribuição e máquinas especiais.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    /* Catálogo Hero */
+    .cat-hero {
+        background: linear-gradient(135deg, #040d1a 0%, #0a1929 20%, #0f2744 45%, #122d4f 60%, #0a1f3a 80%, #060e1e 100%);
+        padding: 140px 0 80px;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+    }
+    .cat-hero::before {
+        content:'';position:absolute;
+        width:800px;height:800px;
+        top:-300px;right:-200px;
+        background:radial-gradient(circle, rgba(200,152,44,0.12) 0%, rgba(200,152,44,0.04) 40%, transparent 70%);
+        border-radius:50%;
+        animation:heroOrb1 8s ease-in-out infinite;
+    }
+    .cat-hero::after {
+        content:'';position:absolute;
+        width:600px;height:600px;
+        bottom:-200px;left:-100px;
+        background:radial-gradient(circle, rgba(27,63,107,0.25) 0%, rgba(59,130,246,0.08) 40%, transparent 70%);
+        border-radius:50%;
+        animation:heroOrb2 10s ease-in-out infinite;
+    }
+    @keyframes heroOrb1 {
+        0%,100%{transform:translate(0,0) scale(1)}
+        50%{transform:translate(-40px,30px) scale(1.1)}
+    }
+    @keyframes heroOrb2 {
+        0%,100%{transform:translate(0,0) scale(1)}
+        50%{transform:translate(30px,-20px) scale(1.05)}
+    }
+    .cat-hero .hero-pattern {
+        position:absolute;inset:0;
+        background-image:
+            linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+        background-size:60px 60px;
+        z-index:0;
+    }
+    .cat-hero .hero-glow-line {
+        position:absolute;bottom:0;left:0;right:0;height:1px;
+        background:linear-gradient(90deg, transparent 0%, rgba(200,152,44,0.4) 30%, rgba(200,152,44,0.6) 50%, rgba(200,152,44,0.4) 70%, transparent 100%);
+        z-index:2;
+    }
+    .cat-hero-content { position: relative; z-index: 1; }
+    .cat-hero .section-label { color: var(--accent-light); }
+    .cat-hero h1 {
+        font-family: var(--font-display);
+        font-size: clamp(30px, 4vw, 52px);
+        font-weight: 800;
+        color: #fff;
+        letter-spacing: -0.03em;
+        margin-bottom: 16px;
+    }
+    .cat-hero p {
+        font-size: 17px;
+        color: rgba(255,255,255,0.6);
+        max-width: 550px;
+        margin: 0 auto;
+        line-height: 1.7;
+    }
+
+    /* Filter Tabs */
+    .cat-filters {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        padding: 40px 0 20px;
+    }
+    .cat-filter-btn {
+        padding: 10px 24px;
+        border-radius: 50px;
+        border: 1px solid var(--border);
+        background: var(--bg);
+        font-family: var(--font-main);
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text-secondary);
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    .cat-filter-btn:hover { border-color: var(--accent); color: var(--primary); }
+    .cat-filter-btn.active {
+        background: var(--primary);
+        color: #fff;
+        border-color: var(--primary);
+    }
+
+    /* Product Grid */
+    .cat-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+        padding: 20px 0 80px;
+    }
+    .cat-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        transition: all 0.3s;
+    }
+    .cat-card:hover {
+        border-color: var(--accent);
+        box-shadow: var(--shadow);
+        transform: translateY(-6px);
+    }
+    .cat-card-img {
+        width: 100%;
+        height: 240px;
+        overflow: hidden;
+        position: relative;
+    }
+    .cat-card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s;
+    }
+    .cat-card:hover .cat-card-img img { transform: scale(1.06); }
+    .cat-card-badge {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: var(--primary);
+        color: #fff;
+        font-size: 11px;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: 50px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+    }
+    .cat-card-body {
+        padding: 24px;
+    }
+    .cat-card-body h3 {
+        font-family: var(--font-display);
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 8px;
+        letter-spacing: -0.02em;
+    }
+    .cat-card-body p {
+        font-size: 14px;
+        color: var(--text-secondary);
+        line-height: 1.7;
+        margin-bottom: 20px;
+    }
+    .cat-card-footer {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+    .cat-card-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--accent);
+        text-decoration: none;
+        transition: gap 0.3s;
+    }
+    .cat-card-link:hover { gap: 10px; }
+    .cat-card-link svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+    .cat-card-whatsapp {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #25D366;
+        text-decoration: none;
+    }
+    .cat-card-whatsapp svg { width: 16px; height: 16px; fill: currentColor; }
+
+    @media (max-width: 1024px) {
+        .cat-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+        .cat-grid { grid-template-columns: 1fr; }
+        .cat-filters { gap: 8px; }
+        .cat-filter-btn { padding: 8px 16px; font-size: 13px; }
+    }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header">
+    <div class="wrap header-inner">
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="A&E Painéis">
+        </a>
+        <nav class="nav" id="mainNav">
+            <a href="index.html" class="nav-link">Home</a>
+            <div class="nav-dropdown">
+                <a href="#" class="nav-link nav-dropdown-toggle active">
+                    Catálogo de Produtos
+                    <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                </a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-has-sub">
+                        <a href="barramento-padrao-din.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Linha DIN Standard</a>
+                        <div class="dropdown-submenu">
+                            <a href="barramento-padrao-din.html#bifasico-100a">Bifásico 100A</a>
+                            <a href="barramento-padrao-din.html#bifasico-150a">Bifásico 150A</a>
+                            <a href="barramento-padrao-din.html#bifasico-225a">Bifásico 225A</a>
+                            <a href="barramento-padrao-din.html#trifasico-100a">Trifásico 100A</a>
+                            <a href="barramento-padrao-din.html#trifasico-150a">Trifásico 150A</a>
+                            <a href="barramento-padrao-din.html#trifasico-225a">Trifásico 225A</a>
+                        </div>
+                    </div>
+                    <a href="barramento-especial-din.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Linha DIN Sob Medida</a>
+                    <a href="barramento-neutro-terra.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Barra de Neutro e Terra</a>
+                    <a href="barramentos-especiais.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Soluções Sob Projeto</a>
+                    <a href="barramento-derivacao.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Barramento de Derivação</a>
+                </div>
+            </div>
+            <a href="empresa.html" class="nav-link">Empresa</a>
+            <a href="contato.html" class="nav-link">Contato</a>
+            <a href="contato.html" class="nav-cta">Fale Conosco</a>
+        </nav>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="cat-hero">
+    <div class="hero-pattern"></div>
+    <div class="hero-glow-line"></div>
+    <div class="wrap cat-hero-content">
+        <div class="section-label">A&E Painéis</div>
+        <h1>Nosso Catálogo de <span style="color:var(--accent-light)">Produtos</span></h1>
+        <p>Conheça nossa linha completa de barramentos elétricos, painéis de comando, quadros de distribuição e máquinas especiais.</p>
+    </div>
+</section>
+
+<!-- FILTERS + GRID -->
+<section class="section">
+    <div class="wrap">
+        <div class="cat-filters">
+            <button class="cat-filter-btn active" onclick="filterCards('todos')">Todos</button>
+            <button class="cat-filter-btn" onclick="filterCards('barramento')">Barramentos</button>
+            <button class="cat-filter-btn" onclick="filterCards('painel')">Painéis & Quadros</button>
+            <button class="cat-filter-btn" onclick="filterCards('maquina')">Máquinas Especiais</button>
+        </div>
+
+        <div class="cat-grid" id="catGrid">
+
+            <!-- BARRAMENTOS -->
+            <div class="cat-card reveal" data-cat="barramento">
+                <div class="cat-card-img">
+                    <img src="img/barramento-trifasico-1.jpg" alt="Barramento Bifásico DIN">
+                    <div class="cat-card-badge">Barramento</div>
+                </div>
+                <div class="cat-card-body">
+                    <h3>Barramento Bifásico DIN</h3>
+                    <p>Barramento bifásico de 100A a 225A em cobre eletrolítico com banho de nitrato de prata. Compatível com disjuntores DIN de todas as marcas. Ideal para quadros de distribuição residenciais e comerciais.</p>
+                    <div class="cat-card-footer">
+                        <a href="barramento-padrao-din.html#bifasico-100a" class="cat-card-link">Ver detalhes <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                        <a href="https://wa.me/5511912214610?text=Olá! Gostaria de orçamento para Barramento Bifásico DIN." target="_blank" class="cat-card-whatsapp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>Orçamento</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cat-card reveal reveal-d1" data-cat="barramento">
+                <div class="cat-card-img">
+                    <img src="img/barramento-trifasico-2.jpg" alt="Barramento Trifásico DIN">
+                    <div class="cat-card-badge">Barramento</div>
+                </div>
+                <div class="cat-card-body">
+                    <h3>Barramento Trifásico DIN</h3>
+                    <p>Barramento trifásico de 100A a 225A com isolamento por cores (preto, branco, vermelho). Cobre eletrolítico com banho de prata, fornecido com isoladores e trilhos DIN. Para quadros industriais e comerciais.</p>
+                    <div class="cat-card-footer">
+                        <a href="barramento-padrao-din.html#trifasico-100a" class="cat-card-link">Ver detalhes <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                        <a href="https://wa.me/5511912214610?text=Olá! Gostaria de orçamento para Barramento Trifásico DIN." target="_blank" class="cat-card-whatsapp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>Orçamento</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cat-card reveal reveal-d2" data-cat="barramento">
+                <div class="cat-card-img">
+                    <img src="img/barramento-especial-1.jpg" alt="Barramento Especial DIN">
+                    <div class="cat-card-badge">Sob Medida</div>
+                </div>
+                <div class="cat-card-body">
+                    <h3>Barramento Especial DIN</h3>
+                    <p>Barramentos sob medida com dimensões, furação e configuração personalizadas. Projeto exclusivo para cada aplicação, incluindo barras de interligação e conjuntos para CCM/QGBT.</p>
+                    <div class="cat-card-footer">
+                        <a href="barramento-especial-din.html" class="cat-card-link">Ver detalhes <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                        <a href="https://wa.me/5511912214610?text=Olá! Gostaria de orçamento para Barramento Especial DIN." target="_blank" class="cat-card-whatsapp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>Orçamento</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cat-card reveal" data-cat="barramento">
+                <div class="cat-card-img">
+                    <img src="img/neutro-terra-1.jpg" alt="Barra de Neutro e Terra">
+                    <div class="cat-card-badge">Barramento</div>
+                </div>
+                <div class="cat-card-body">
+                    <h3>Barra de Neutro e Terra</h3>
+                    <p>Barras de neutro e terra em cobre eletrolítico com isoladores coloridos (verde para terra, azul para neutro). Disponíveis em versões padrão e personalizada com furação sob medida.</p>
+                    <div class="cat-card-footer">
+                        <a href="barramento-neutro-terra.html" class="cat-card-link">Ver detalhes <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                        <a href="https://wa.me/5511912214610?text=Olá! Gostaria de orçamento para Barra de Neutro e Terra." target="_blank" class="cat-card-whatsapp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>Orçamento</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cat-card reveal reveal-d1" data-cat="barramento">
+                <div class="cat-card-img">
+                    <img src="img/barramento-bifasico-1.jpg" alt="Barramento de Derivação">
+                    <div class="cat-card-badge">Barramento</div>
+                </div>
+                <div class="cat-card-body">
+                    <h3>Barramento de Derivação</h3>
+                    <p>Barramento de derivação 40A para conexão entre disjuntores. Encaixe perfeito com trilho DIN, cobre eletrolítico de alta condutividade. Solução prática para organização de quadros elétricos.</p>
+                    <div class="cat-card-footer">
+                        <a href="barramento-derivacao.html" class="cat-card-link">Ver detalhes <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                        <a href="https://wa.me/5511912214610?text=Olá! Gostaria de orçamento para Barramento de Derivação." target="_blank" class="cat-card-whatsapp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>Orçamento</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cat-card reveal reveal-d2" data-cat="barramento">
+                <div class="cat-card-img">
+                    <img src="img/barramento-trifasico-3.jpg" alt="Soluções Sob Projeto">
+                    <div class="cat-card-badge">Engenharia</div>
+                </div>
+                <div class="cat-card-body">
+                    <h3>Soluções Sob Projeto</h3>
+                    <p>Barramentos de alta amperagem, conjuntos completos para CCM/QGBT, furação especial e barras de interligação. Projeto e fabricação com suporte de engenharia dedicado.</p>
+                    <div class="cat-card-footer">
+                        <a href="barramentos-especiais.html" class="cat-card-link">Ver detalhes <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                        <a href="https://wa.me/5511912214610?text=Olá! Gostaria de orçamento para Soluções Sob Projeto." target="_blank" class="cat-card-whatsapp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>Orçamento</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAINÉIS & QUADROS -->
+            <div class="cat-card reveal" data-cat="painel">
+                <div class="cat-card-img">
+                    <img src="img/quadro-distribuicao-1.jpg" alt="Quadro de Distribuição">
+                    <div class="cat-card-badge">Painel</div>
+                </div>
+                <div class="cat-card-body">
+                    <h3>Quadro de Distribuição</h3>
+                    <p>Quadros de distribuição completos com barramento trifásico, disjuntores, barramentos de neutro e terra. Montagem profissional com identificação e organização impecável.</p>
+                    <div class="cat-card-footer">
+                        <a href="contato.html" class="cat-card-link">Solicitar projeto <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                        <a href="https://wa.me/5511912214610?text=Olá! Gostaria de orçamento para Quadro de Distribuição." target="_blank" class="cat-card-whatsapp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>Orçamento</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cat-card reveal reveal-d1" data-cat="painel">
+                <div class="cat-card-img">
+                    <img src="img/quadro-distribuicao-2.jpg" alt="QGBT">
+                    <div class="cat-card-badge">Painel</div>
+                </div>
+                <div class="cat-card-body">
+                    <h3>QGBT — Quadro Geral de Baixa Tensão</h3>
+                    <p>Quadros gerais de baixa tensão para instalações industriais. Projeto completo com disjuntor geral, barramentos dimensionados e proteções conforme norma NBR IEC 61439.</p>
+                    <div class="cat-card-footer">
+                        <a href="contato.html" class="cat-card-link">Solicitar projeto <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                        <a href="https://wa.me/5511912214610?text=Olá! Gostaria de orçamento para QGBT." target="_blank" class="cat-card-whatsapp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>Orçamento</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cat-card reveal reveal-d2" data-cat="painel">
+                <div class="cat-card-img">
+                    <img src="img/quadro-robos-1.jpg" alt="Painel para Robôs">
+                    <div class="cat-card-badge">Painel</div>
+                </div>
+                <div class="cat-card-body">
+                    <h3>Painel de Comando Industrial</h3>
+                    <p>Painéis de comando para automação industrial, robótica e linhas de produção. Montagem com componentes de primeira linha, tomadas industriais e proteção IP adequada.</p>
+                    <div class="cat-card-footer">
+                        <a href="contato.html" class="cat-card-link">Solicitar projeto <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                        <a href="https://wa.me/5511912214610?text=Olá! Gostaria de orçamento para Painel de Comando Industrial." target="_blank" class="cat-card-whatsapp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>Orçamento</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cat-card reveal" data-cat="painel">
+                <div class="cat-card-img">
+                    <img src="img/sessao-quadros-5.jpg" alt="Produção em Escala">
+                    <div class="cat-card-badge">Produção</div>
+                </div>
+                <div class="cat-card-body">
+                    <h3>Produção de Quadros em Escala</h3>
+                    <p>Capacidade para produzir lotes de quadros elétricos sob encomenda. Linha de produção organizada com controle de qualidade rigoroso em cada etapa da montagem.</p>
+                    <div class="cat-card-footer">
+                        <a href="contato.html" class="cat-card-link">Solicitar projeto <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                        <a href="https://wa.me/5511912214610?text=Olá! Gostaria de orçamento para Produção de Quadros em Escala." target="_blank" class="cat-card-whatsapp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>Orçamento</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MÁQUINAS ESPECIAIS -->
+            <div class="cat-card reveal reveal-d1" data-cat="maquina">
+                <div class="cat-card-img">
+                    <img src="img/quadro-robos-2.jpg" alt="Máquina Especial">
+                    <div class="cat-card-badge">Máquina</div>
+                </div>
+                <div class="cat-card-body">
+                    <h3>Máquinas Especiais</h3>
+                    <p>Desenvolvimento e montagem de máquinas especiais sob encomenda para automação industrial. Engenharia dedicada, fabricação própria e suporte técnico do projeto à instalação.</p>
+                    <div class="cat-card-footer">
+                        <a href="contato.html" class="cat-card-link">Solicitar projeto <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                        <a href="https://wa.me/5511912214610?text=Olá! Gostaria de orçamento para Máquinas Especiais." target="_blank" class="cat-card-whatsapp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>Orçamento</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <div class="cta-pattern"></div>
+    <div class="cta-glow-line"></div>
+    <div class="wrap">
+        <div class="cta-box reveal">
+            <h2>Não encontrou o que procura? <span style="color:var(--accent-light)">Fabricamos sob medida.</span></h2>
+            <p>Entre em contato e conte sobre seu projeto. Nossa equipe de engenharia está pronta para desenvolver a solução ideal.</p>
+            <div class="cta-actions">
+                <a href="https://wa.me/5511912214610" target="_blank" class="btn-primary">
+                    <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 01-4.243-1.214l-.252-.149-2.868.852.852-2.868-.168-.268A8 8 0 1112 20z"/></svg>
+                    Fale com um Especialista
+                </a>
+                <a href="contato.html" class="btn-outline">Enviar Mensagem</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="wrap footer-grid">
+        <div class="footer-brand">
+            <a href="index.html" class="logo"><img src="logo.png" alt="A&E Painéis"></a>
+            <p>Fabricação de barramentos elétricos, painéis de comando e máquinas especiais com qualidade e prazo garantidos.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Produtos</h4>
+            <a href="barramento-padrao-din.html">Linha DIN Standard</a>
+            <a href="barramento-especial-din.html">Linha DIN Sob Medida</a>
+            <a href="barramento-neutro-terra.html">Barra de Neutro e Terra</a>
+            <a href="barramentos-especiais.html">Soluções Sob Projeto</a>
+            <a href="barramento-derivacao.html">Barramento de Derivação</a>
+        </div>
+        <div class="footer-col">
+            <h4>Empresa</h4>
+            <a href="empresa.html">Quem Somos</a>
+            <a href="contato.html">Contato</a>
+        </div>
+        <div class="footer-col">
+            <h4>Contato</h4>
+            <a href="https://wa.me/5511912214610" target="_blank">WhatsApp</a>
+            <a href="mailto:aiepaineis@gmail.com">aiepaineis@gmail.com</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="wrap">
+            <p>&copy; 2026 A&E Painéis. Todos os direitos reservados.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Filter
+function filterCards(cat) {
+    document.querySelectorAll('.cat-filter-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    document.querySelectorAll('.cat-card').forEach(card => {
+        if (cat === 'todos' || card.dataset.cat === cat) {
+            card.style.display = '';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+// Header scroll
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Mobile menu
+const hamburger = document.getElementById('hamburger');
+const mainNav = document.getElementById('mainNav');
+hamburger?.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mainNav.classList.toggle('open');
+});
+
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('revealed'); obs.unobserve(e.target); }});
+}, {threshold:0.1});
+revealEls.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

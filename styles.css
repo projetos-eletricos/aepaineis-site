@@ -72,7 +72,7 @@ ul { list-style:none; }
 }
 
 .logo { display:flex;align-items:center;gap:0; }
-.logo img { height:80px;width:auto; }
+.logo img { height:90px;width:auto;max-height:calc(var(--header-h) - 10px); }
 
 /* Nav */
 .nav { display:flex;align-items:center;gap:0; }
