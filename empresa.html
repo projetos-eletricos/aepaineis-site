@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empresa | A&E Painéis — Quem Somos</title>
+    <meta name="description" content="Conheça a A&E Painéis: empresa especializada em barramentos elétricos, painéis de comando e máquinas especiais. Nossa história, valores e compromisso com a qualidade.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ===== EMPRESA PAGE STYLES ===== */
+
+        /* --- Hero da Empresa --- */
+        .empresa-hero {
+            position: relative;
+            padding: 160px 0 100px;
+            background: var(--gradient-hero);
+            overflow: hidden;
+        }
+        .empresa-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .empresa-hero .hero-glow-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-accent);
+            z-index: 3;
+        }
+
+        /* --- Photo Marquee --- */
+        .hero-marquee-section {
+            padding: 0;
+            background: var(--bg);
+            overflow: hidden;
+            position: relative;
+        }
+        .hero-marquee-section::before,
+        .hero-marquee-section::after {
+            content: '';
+            position: absolute;
+            top: 0; bottom: 0;
+            width: 120px;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .hero-marquee-section::before {
+            left: 0;
+            background: linear-gradient(to right, var(--bg), transparent);
+        }
+        .hero-marquee-section::after {
+            right: 0;
+            background: linear-gradient(to left, var(--bg), transparent);
+        }
+        .hero-marquee {
+            display: flex;
+            gap: 20px;
+            animation: marqueeScroll 40s linear infinite;
+            width: max-content;
+            padding: 40px 0;
+        }
+        .hero-marquee img {
+            height: 200px;
+            width: 300px;
+            border-radius: var(--radius);
+            object-fit: cover;
+            flex-shrink: 0;
+            transition: transform 0.4s, box-shadow 0.4s;
+            box-shadow: var(--shadow-sm);
+        }
+        .hero-marquee img:hover {
+            transform: scale(1.04);
+            box-shadow: var(--shadow-lg);
+        }
+        .hero-marquee-placeholder {
+            height: 200px;
+            width: 300px;
+            border-radius: var(--radius);
+            background: var(--surface);
+            border: 2px dashed var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            flex-shrink: 0;
+        }
+        @keyframes marqueeScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .empresa-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .empresa-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(200,152,44,0.15);
+            border: 1px solid rgba(200,152,44,0.3);
+            border-radius: 50px;
+            padding: 6px 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-light);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+        .empresa-hero-badge svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--accent-light);
+            fill: none;
+            stroke-width: 2;
+        }
+        .empresa-hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+        .empresa-hero h1 .accent {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .empresa-hero p {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- Animated Orbs (background) --- */
+        .empresa-hero .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+        }
+        .empresa-hero .orb-1 {
+            width: 500px; height: 500px;
+            background: var(--accent);
+            top: -200px; right: -100px;
+            animation: orbFloat1 12s ease-in-out infinite;
+        }
+        .empresa-hero .orb-2 {
+            width: 400px; height: 400px;
+            background: #1B3F6B;
+            bottom: -150px; left: -100px;
+            animation: orbFloat2 15s ease-in-out infinite;
+        }
+        @keyframes orbFloat1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-40px,30px)} }
+        @keyframes orbFloat2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(30px,-20px)} }
+
+        /* --- Seção: Nossa História --- */
+        .story-section {
+            padding: 100px 0;
+            background: var(--bg);
+        }
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .story-content .section-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+        .story-content h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+        .story-content p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        .story-visual {
+            position: relative;
+        }
+        .story-image-frame {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background: var(--surface);
+            aspect-ratio: 4/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-lg);
+        }
+        .story-image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .story-image-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        .story-image-placeholder svg {
+            width: 48px;
+            height: 48px;
+            stroke: var(--text-muted);
+            fill: none;
+            stroke-width: 1.5;
+        }
+        .story-accent-box {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: var(--gradient-accent);
+            padding: 20px 28px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            z-index: 2;
+        }
+        .story-accent-box .sab-number {
+            font-family: var(--font-display);
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1;
+        }
+        .story-accent-box .sab-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.85);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        /* --- Seção: Missão, Visão, Valores --- */
+        .mvv-section {
+            padding: 100px 0;
+            background: var(--bg-light);
+        }
+        .mvv-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 48px;
+        }
+        .mvv-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 40px 32px;
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .mvv-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        .mvv-card:hover::before {
+            transform: scaleX(1);
+        }
+        .mvv-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--border-hover);
+        }
+        .mvv-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            background: var(--accent-glow);
+        }
+        .mvv-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--accent);
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .mvv-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 14px;
+        }
+        .mvv-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* --- Seção: Pilares (Timeline Vertical) --- */
+        .pilares-section {
+            padding: 100px 0;
+            background: var(--bg);
+        }
+        .timeline {
+            position: relative;
+            max-width: 700px;
+            margin: 48px auto 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 32px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--accent), var(--primary));
+            border-radius: 3px;
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 80px;
+            padding-bottom: 48px;
+        }
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 20px;
+            top: 4px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--bg);
+            border: 3px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+        .timeline-dot svg {
+            width: 14px;
+            height: 14px;
+            stroke: var(--accent);
+            fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .timeline-item h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        .timeline-item p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* --- Seção: Números / Counters --- */
+        .numbers-section {
+            padding: 80px 0;
+            background: var(--gradient-hero);
+            position: relative;
+            overflow: hidden;
+        }
+        .numbers-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .numbers-grid {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            text-align: center;
+        }
+        .number-item {
+            padding: 24px 16px;
+        }
+        .number-value {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 800;
+            color: var(--accent-light);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        .number-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.7);
+            letter-spacing: 0.5px;
+        }
+
+        /* --- Seção: Expertise --- */
+        .expertise-section {
+            padding: 100px 0;
+            background: var(--bg);
+        }
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .expertise-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 36px;
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+            transition: all 0.3s ease;
+        }
+        .expertise-card:hover {
+            border-color: var(--border-hover);
+            box-shadow: var(--shadow);
+            transform: translateY(-2px);
+        }
+        .expertise-icon {
+            flex-shrink: 0;
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent-glow);
+        }
+        .expertise-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--accent);
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .expertise-info h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        .expertise-info p {
+            color: var(--text-secondary);
+            font-size: 0.93rem;
+            line-height: 1.7;
+        }
+
+        /* --- Seção: Compromisso / CTA --- */
+        .commitment-section {
+            padding: 100px 0;
+            background: var(--bg-light);
+        }
+        .commitment-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .commitment-content h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+        .commitment-content p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 28px;
+        }
+        .commitment-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .commitment-list-item {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+        .commitment-check {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--accent-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2px;
+        }
+        .commitment-check svg {
+            width: 14px;
+            height: 14px;
+            stroke: var(--accent);
+            fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .commitment-list-item span {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .commitment-visual {
+            position: relative;
+        }
+        .commitment-card-stack {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .ccs-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px 22px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .ccs-card:nth-child(2) {
+            transform: translateY(20px);
+        }
+        .ccs-card:nth-child(3) {
+            transform: translateY(-10px);
+        }
+        .ccs-card:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow);
+        }
+        .ccs-card svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--accent);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            margin-bottom: 12px;
+        }
+        .ccs-card h4 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+        .ccs-card p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* --- Final CTA --- */
+        .empresa-cta {
+            padding: 80px 0;
+            background: var(--bg);
+        }
+        .empresa-cta-box {
+            background: var(--gradient-hero);
+            border-radius: var(--radius-lg);
+            padding: 64px 48px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .empresa-cta-box::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .empresa-cta-box > * {
+            position: relative;
+            z-index: 2;
+        }
+        .empresa-cta-box h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+        .empresa-cta-box p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.05rem;
+            max-width: 550px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
+        }
+        .empresa-cta-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* --- Responsivo --- */
+        @media (max-width: 1024px) {
+            .story-grid,
+            .commitment-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .mvv-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .expertise-grid {
+                grid-template-columns: 1fr;
+            }
+            .numbers-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+        }
+        @media (max-width: 768px) {
+            .empresa-hero {
+                padding: 130px 0 70px;
+            }
+            .numbers-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+            .commitment-card-stack {
+                grid-template-columns: 1fr 1fr;
+            }
+            .ccs-card:nth-child(2),
+            .ccs-card:nth-child(3) {
+                transform: none;
+            }
+            .empresa-cta-box {
+                padding: 40px 24px;
+            }
+            .timeline::before {
+                left: 18px;
+            }
+            .timeline-dot {
+                left: 6px;
+                width: 24px;
+                height: 24px;
+            }
+            .timeline-item {
+                padding-left: 56px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header">
+    <div class="wrap header-inner">
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="A&E Painéis">
+        </a>
+        <nav class="nav" id="mainNav">
+            <a href="index.html" class="nav-link">Home</a>
+            <div class="nav-dropdown">
+                <a href="#" class="nav-link nav-dropdown-toggle">
+                    Catálogo de Produtos
+                    <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                </a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-has-sub">
+                        <a href="barramento-padrao-din.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Linha DIN Standard</a>
+                        <div class="dropdown-submenu">
+                            <a href="barramento-padrao-din.html#bifasico-100a">Bifásico 100A</a>
+                            <a href="barramento-padrao-din.html#bifasico-150a">Bifásico 150A</a>
+                            <a href="barramento-padrao-din.html#bifasico-225a">Bifásico 225A</a>
+                            <a href="barramento-padrao-din.html#trifasico-100a">Trifásico 100A</a>
+                            <a href="barramento-padrao-din.html#trifasico-150a">Trifásico 150A</a>
+                            <a href="barramento-padrao-din.html#trifasico-225a">Trifásico 225A</a>
+                        </div>
+                    </div>
+                    <a href="barramento-especial-din.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Linha DIN Sob Medida</a>
+                    <a href="barramento-neutro-terra.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Barra de Neutro e Terra</a>
+                    <a href="barramentos-especiais.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Soluções Sob Projeto</a>
+                    <a href="barramento-derivacao.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Barramento de Derivação</a>
+                </div>
+            </div>
+            <a href="empresa.html" class="nav-link active">Empresa</a>
+            <a href="contato.html" class="nav-link">Contato</a>
+            <a href="contato.html" class="nav-cta">Fale Conosco</a>
+        </nav>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- HERO EMPRESA -->
+<section class="empresa-hero">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="hero-glow-line"></div>
+    <div class="wrap">
+        <div class="empresa-hero-content reveal">
+            <div class="empresa-hero-badge">
+                <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                Quem Somos
+            </div>
+            <h1>Engenharia Elétrica com <span class="accent">Precisão Industrial</span></h1>
+            <p>Somos a A&E Painéis — fabricantes de barramentos elétricos, painéis de comando e máquinas especiais. Cada peça que sai da nossa linha carrega compromisso com segurança, performance e durabilidade.</p>
+        </div>
+    </div>
+</section>
+
+<!-- MARQUEE DE FOTOS -->
+<section class="hero-marquee-section">
+    <div class="hero-marquee">
+        <img src="img/barramento-trifasico-2.jpg" alt="Barramento Trifásico">
+        <img src="img/quadro-distribuicao-1.jpg" alt="Quadro de Distribuição">
+        <img src="img/sessao-quadros-2.jpg" alt="Produção de Painéis">
+        <img src="img/neutro-terra-1.jpg" alt="Barra Neutro e Terra">
+        <img src="img/quadro-robos-1.jpg" alt="Painel para Robôs">
+        <img src="img/barramento-trifasico-4.jpg" alt="Conjunto Completo">
+        <img src="img/sessao-quadros-7.jpg" alt="Linha de Produção">
+        <img src="img/quadro-distribuicao-2.jpg" alt="Quadro QGBT">
+        <!-- Duplicado para loop contínuo -->
+        <img src="img/barramento-trifasico-2.jpg" alt="Barramento Trifásico">
+        <img src="img/quadro-distribuicao-1.jpg" alt="Quadro de Distribuição">
+        <img src="img/sessao-quadros-2.jpg" alt="Produção de Painéis">
+        <img src="img/neutro-terra-1.jpg" alt="Barra Neutro e Terra">
+        <img src="img/quadro-robos-1.jpg" alt="Painel para Robôs">
+        <img src="img/barramento-trifasico-4.jpg" alt="Conjunto Completo">
+        <img src="img/sessao-quadros-7.jpg" alt="Linha de Produção">
+        <img src="img/quadro-distribuicao-2.jpg" alt="Quadro QGBT">
+    </div>
+</section>
+
+<!-- NOSSA HISTÓRIA -->
+<section class="story-section">
+    <div class="wrap">
+        <div class="story-grid">
+            <div class="story-content reveal">
+                <div class="section-label">Nossa História</div>
+                <h2>Nascemos no chão de fábrica. Crescemos com engenharia.</h2>
+                <p>A A&E Painéis nasceu da experiência prática de profissionais que viveram a rotina da indústria elétrica por dentro. Identificamos a necessidade de barramentos de alta qualidade, fabricados sob medida e com agilidade — algo que o mercado não oferecia de forma acessível.</p>
+                <p>Desde então, investimos continuamente em processos, materiais e engenharia para entregar soluções que atendem desde montadoras de quadros até grandes projetos industriais. Hoje, nossos barramentos estão presentes em centenas de instalações por todo o Brasil.</p>
+            </div>
+            <div class="story-visual reveal reveal-d2">
+                <div class="story-image-frame">
+                    <!-- Substitua pelo caminho da imagem da empresa/fábrica -->
+                    <div class="story-image-placeholder">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                        <span>Foto da empresa / fábrica</span>
+                    </div>
+                </div>
+                <div class="story-accent-box">
+                    <div class="sab-number" data-count="15">0</div>
+                    <div class="sab-label">Anos de Mercado</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MISSÃO, VISÃO, VALORES -->
+<section class="mvv-section">
+    <div class="wrap">
+        <div class="section-header reveal" style="text-align:center;">
+            <div class="section-label">Nossos Princípios</div>
+            <h2 class="section-title">Missão, Visão e Valores</h2>
+            <p class="section-sub">Os pilares que guiam cada decisão, cada projeto e cada entrega.</p>
+        </div>
+        <div class="mvv-grid">
+            <div class="mvv-card reveal reveal-d1">
+                <div class="mvv-icon">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M16 12l-4-4-4 4M12 16V8"/></svg>
+                </div>
+                <h3>Missão</h3>
+                <p>Fornecer barramentos elétricos, painéis e máquinas especiais com qualidade superior, agilidade na entrega e engenharia sob medida, contribuindo para a segurança e eficiência das instalações elétricas dos nossos clientes.</p>
+            </div>
+            <div class="mvv-card reveal reveal-d2">
+                <div class="mvv-icon">
+                    <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </div>
+                <h3>Visão</h3>
+                <p>Ser referência nacional na fabricação de barramentos e soluções elétricas industriais, reconhecida pela excelência técnica, inovação em processos e compromisso inegociável com a qualidade.</p>
+            </div>
+            <div class="mvv-card reveal reveal-d3">
+                <div class="mvv-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h3>Valores</h3>
+                <p>Qualidade sem concessão. Compromisso com prazos. Transparência nas relações comerciais. Inovação contínua nos processos. Respeito ao cliente e ao trabalho em equipe.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PILARES / O QUE NOS DIFERENCIA -->
+<section class="pilares-section">
+    <div class="wrap">
+        <div class="section-header reveal" style="text-align:center;">
+            <div class="section-label">O que nos diferencia</div>
+            <h2 class="section-title">Nossos Pilares</h2>
+            <p class="section-sub">Cada detalhe do nosso processo é pensado para entregar o melhor produto ao cliente.</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item reveal">
+                <div class="timeline-dot">
+                    <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                </div>
+                <h3>Cobre Eletrolítico de Alta Pureza</h3>
+                <p>Utilizamos exclusivamente cobre eletrolítico com pureza de 99,9%, garantindo condutividade elétrica máxima e durabilidade superior. Cada barra é inspecionada antes de entrar no processo produtivo.</p>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-dot">
+                    <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h3>Banho de Nitrato de Prata</h3>
+                <p>Nossos barramentos recebem tratamento com banho de nitrato de prata, proporcionando resistência máxima à oxidação e melhor contato elétrico nos pontos de conexão.</p>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-dot">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9"/></svg>
+                </div>
+                <h3>Fabricação Própria Sob Medida</h3>
+                <p>Cada barramento é fabricado na nossa planta, permitindo personalização completa: medidas, furação, amperagem e acabamento conforme a necessidade do projeto do cliente.</p>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-dot">
+                    <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                </div>
+                <h3>Logística Nacional</h3>
+                <p>Atendemos todo o território brasileiro com embalagem reforçada e rastreamento de envio. Trabalhamos com transportadoras confiáveis para garantir entrega segura e dentro do prazo.</p>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-dot">
+                    <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+                <h3>Compatibilidade com Grandes Marcas</h3>
+                <p>Nossos produtos são compatíveis com os principais disjuntores e quadros do mercado: Schneider, ABB, WEG, Siemens e outros, garantindo versatilidade na montagem.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- NÚMEROS -->
+<section class="numbers-section">
+    <div class="wrap">
+        <div class="numbers-grid reveal">
+            <div class="number-item">
+                <div class="number-value" data-count="500">0</div>
+                <div class="number-label">Projetos Realizados</div>
+            </div>
+            <div class="number-item">
+                <div class="number-value" data-count="15">0</div>
+                <div class="number-label">Anos de Experiência</div>
+            </div>
+            <div class="number-item">
+                <div class="number-value" data-count="200">0</div>
+                <div class="number-label">Clientes Atendidos</div>
+            </div>
+            <div class="number-item">
+                <div class="number-value" data-count="100">0</div>
+                <div class="number-label">Satisfação Garantida</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EXPERTISE -->
+<section class="expertise-section">
+    <div class="wrap">
+        <div class="section-header reveal" style="text-align:center;">
+            <div class="section-label">Áreas de Atuação</div>
+            <h2 class="section-title">Nossa Expertise</h2>
+            <p class="section-sub">Cobrimos toda a cadeia de soluções elétricas industriais.</p>
+        </div>
+        <div class="expertise-grid">
+            <div class="expertise-card reveal reveal-d1">
+                <div class="expertise-icon">
+                    <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                </div>
+                <div class="expertise-info">
+                    <h3>Barramentos Padrão DIN</h3>
+                    <p>Bifásicos e trifásicos de 100A a 225A, com polos de 12 a 120. Fabricação em cobre eletrolítico com banho de prata opcional.</p>
+                </div>
+            </div>
+            <div class="expertise-card reveal reveal-d2">
+                <div class="expertise-icon">
+                    <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                </div>
+                <div class="expertise-info">
+                    <h3>Barramentos Especiais DIN</h3>
+                    <p>Projetos sob medida para aplicações específicas, com dimensões e configurações customizadas conforme a necessidade.</p>
+                </div>
+            </div>
+            <div class="expertise-card reveal reveal-d1">
+                <div class="expertise-icon">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M2 7h20"/></svg>
+                </div>
+                <div class="expertise-info">
+                    <h3>Painéis Elétricos</h3>
+                    <p>Painéis de comando, distribuição, CCMs e QGBTs — projetados e montados sob medida para operações industriais de qualquer porte.</p>
+                </div>
+            </div>
+            <div class="expertise-card reveal reveal-d2">
+                <div class="expertise-icon">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9"/></svg>
+                </div>
+                <div class="expertise-info">
+                    <h3>Máquinas Especiais</h3>
+                    <p>Desenvolvimento e montagem de máquinas sob encomenda, com engenharia dedicada, suporte técnico e acompanhamento completo do projeto.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COMPROMISSO -->
+<section class="commitment-section">
+    <div class="wrap">
+        <div class="commitment-grid">
+            <div class="commitment-content reveal">
+                <div class="section-label">Nosso Compromisso</div>
+                <h2>Qualidade não é diferencial. É obrigação.</h2>
+                <p>Na A&E Painéis, qualidade está em cada etapa — da seleção da matéria-prima ao acabamento final. Nosso compromisso é entregar produtos que funcionam com perfeição desde o primeiro dia, em qualquer condição de operação.</p>
+                <div class="commitment-list">
+                    <div class="commitment-list-item">
+                        <div class="commitment-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <span>Matéria-prima rastreada e certificada</span>
+                    </div>
+                    <div class="commitment-list-item">
+                        <div class="commitment-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <span>Inspeção dimensional em cada peça produzida</span>
+                    </div>
+                    <div class="commitment-list-item">
+                        <div class="commitment-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <span>Embalagem reforçada para transporte seguro</span>
+                    </div>
+                    <div class="commitment-list-item">
+                        <div class="commitment-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <span>Suporte técnico pré e pós-venda</span>
+                    </div>
+                    <div class="commitment-list-item">
+                        <div class="commitment-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <span>Compatibilidade garantida com as principais marcas</span>
+                    </div>
+                </div>
+            </div>
+            <div class="commitment-visual reveal reveal-d2">
+                <div class="commitment-card-stack">
+                    <div class="ccs-card">
+                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        <h4>Segurança</h4>
+                        <p>Produtos que protegem instalações e pessoas</p>
+                    </div>
+                    <div class="ccs-card">
+                        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                        <h4>Performance</h4>
+                        <p>Condutividade e resistência máximas</p>
+                    </div>
+                    <div class="ccs-card">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        <h4>Agilidade</h4>
+                        <p>Produção rápida sem perder qualidade</p>
+                    </div>
+                    <div class="ccs-card">
+                        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                        <h4>Parceria</h4>
+                        <p>Atendimento técnico e comercial dedicado</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="empresa-cta">
+    <div class="wrap">
+        <div class="empresa-cta-box reveal">
+            <h2>Pronto para conhecer nossas <span style="color:var(--accent-light)">soluções</span>?</h2>
+            <p>Explore nosso catálogo de barramentos ou fale diretamente com nossa equipe técnica para um orçamento personalizado.</p>
+            <div class="empresa-cta-actions">
+                <a href="barramento-padrao-din.html" class="btn-primary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M2 7h20"/></svg>
+                    Ver Catálogo
+                </a>
+                <a href="https://wa.me/5511912214610" target="_blank" class="btn-outline" style="border-color:rgba(255,255,255,0.3);color:#fff;">
+                    <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 01-4.243-1.214l-.252-.149-2.868.852.852-2.868-.168-.268A8 8 0 1112 20z"/></svg>
+                    Fale pelo WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="wrap">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo"><img src="logo.png" alt="A&E Painéis"></a>
+                <p>Engenharia e montagem de painéis elétricos, barramentos de cobre e máquinas especiais. Excelência desde o projeto até a entrega.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navegação</h4>
+                <a href="index.html">Home</a>
+                <a href="empresa.html">Empresa</a>
+                <a href="contato.html">Contato</a>
+            </div>
+            <div class="footer-col">
+                <h4>Produtos</h4>
+                <a href="barramento-padrao-din.html">Linha DIN Standard</a>
+                <a href="barramento-especial-din.html">Linha DIN Sob Medida</a>
+                <a href="barramento-neutro-terra.html">Barra de Neutro e Terra</a>
+                <a href="barramentos-especiais.html">Soluções Sob Projeto</a>
+                <a href="barramento-derivacao.html">Barramento de Derivação</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contato</h4>
+                <a href="tel:+5511912214610">(11) 91221-4610</a>
+                <a href="mailto:aiepaineis@gmail.com">aiepaineis@gmail.com</a>
+                <a href="https://instagram.com/aepaineis" target="_blank">@aepaineis</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 A&E Painéis. Todos os direitos reservados.</p>
+            <div class="footer-socials">
+                <a href="https://instagram.com/aepaineis" target="_blank" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/5511912214610" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374A9.86 9.86 0 012.087 12c.003-5.45 4.437-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/></svg>
+</a>
+
+<script>
+// Header scroll effect
+window.addEventListener('scroll', () => {
+    document.getElementById('header').classList.toggle('scrolled', window.scrollY > 30);
+});
+
+// Mobile nav
+document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('mainNav').classList.toggle('open');
+});
+document.querySelectorAll('.nav-link').forEach(a => {
+    a.addEventListener('click', () => {
+        document.getElementById('mainNav').classList.remove('open');
+    });
+});
+
+// Reveal on scroll
+const ro = new IntersectionObserver(entries => {
+    entries.forEach(el => {
+        if (el.isIntersecting) {
+            el.target.classList.add('visible');
+            ro.unobserve(el.target);
+        }
+    });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+// Animated counters
+const co = new IntersectionObserver(entries => {
+    entries.forEach(el => {
+        if (el.isIntersecting) {
+            const t = parseInt(el.target.dataset.count);
+            let c = 0;
+            const inc = t / 50;
+            const ti = setInterval(() => {
+                c += inc;
+                if (c >= t) {
+                    el.target.textContent = t + (t === 100 ? '%' : '+');
+                    clearInterval(ti);
+                } else {
+                    el.target.textContent = Math.floor(c);
+                }
+            }, 30);
+            co.unobserve(el.target);
+        }
+    });
+}, { threshold: 0.5 });
+document.querySelectorAll('.number-value[data-count]').forEach(el => co.observe(el));
+document.querySelectorAll('.sab-number[data-count]').forEach(el => co.observe(el));
+</script>
+</body>
+</html>

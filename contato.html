@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato | A&E Painéis — Fale Conosco</title>
+    <meta name="description" content="Entre em contato com a A&E Painéis. Solicite orçamentos, tire dúvidas e conheça nossas soluções em barramentos elétricos, painéis e máquinas especiais.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ===== CONTATO PAGE ===== */
+
+        .contato-hero {
+            position: relative;
+            padding: 150px 0 80px;
+            background: var(--gradient-hero);
+            overflow: hidden;
+        }
+        .contato-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .contato-hero .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.12;
+        }
+        .contato-hero .orb-1 {
+            width: 450px; height: 450px;
+            background: var(--accent);
+            top: -180px; right: -80px;
+            animation: cOrbFloat1 12s ease-in-out infinite;
+        }
+        .contato-hero .orb-2 {
+            width: 350px; height: 350px;
+            background: #1B3F6B;
+            bottom: -120px; left: -80px;
+            animation: cOrbFloat2 15s ease-in-out infinite;
+        }
+        @keyframes cOrbFloat1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-30px,25px)} }
+        @keyframes cOrbFloat2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(25px,-15px)} }
+        .contato-hero .hero-glow-line {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--gradient-accent);
+            z-index: 3;
+        }
+        .contato-hero-inner {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .contato-hero-text {}
+        .contato-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(200,152,44,0.15);
+            border: 1px solid rgba(200,152,44,0.3);
+            border-radius: 50px;
+            padding: 6px 18px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--accent-light);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .contato-hero-badge svg {
+            width: 15px; height: 15px;
+            stroke: var(--accent-light);
+            fill: none; stroke-width: 2;
+        }
+        .contato-hero-text h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4.5vw, 3rem);
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+        .contato-hero-text h1 .accent {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .contato-hero-text p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.7;
+            margin-bottom: 28px;
+            max-width: 480px;
+        }
+
+        /* Quick contact cards in hero */
+        .hero-contact-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .hcc {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 18px 22px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius);
+            backdrop-filter: blur(8px);
+            transition: all 0.3s;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .hcc:hover {
+            background: rgba(255,255,255,0.12);
+            border-color: var(--accent);
+            transform: translateX(6px);
+        }
+        .hcc-icon {
+            width: 48px; height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .hcc-icon svg { width: 24px; height: 24px; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .hcc-whatsapp .hcc-icon { background: rgba(37,211,102,0.15); }
+        .hcc-whatsapp .hcc-icon svg { stroke: #25D366; }
+        .hcc-email .hcc-icon { background: rgba(200,152,44,0.15); }
+        .hcc-email .hcc-icon svg { stroke: var(--accent-light); }
+        .hcc-phone .hcc-icon { background: rgba(59,130,246,0.15); }
+        .hcc-phone .hcc-icon svg { stroke: #3B82F6; }
+        .hcc-insta .hcc-icon { background: rgba(225,48,108,0.15); }
+        .hcc-insta .hcc-icon svg { stroke: #E1306C; }
+        .hcc-info {}
+        .hcc-info strong {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+        .hcc-info span {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.55);
+        }
+        .hcc-arrow {
+            margin-left: auto;
+            opacity: 0;
+            transform: translateX(-8px);
+            transition: all 0.3s;
+        }
+        .hcc-arrow svg { width: 18px; height: 18px; stroke: var(--accent-light); fill: none; stroke-width: 2; }
+        .hcc:hover .hcc-arrow { opacity: 1; transform: translateX(0); }
+
+        /* Form section */
+        .form-section {
+            padding: 100px 0;
+            background: var(--bg);
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+        .form-left .section-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+        .form-left h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+        .form-left p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+
+        /* Trust badges */
+        .trust-badges {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            transition: all 0.3s;
+        }
+        .trust-badge:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-sm);
+        }
+        .trust-badge-icon {
+            width: 40px; height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            background: var(--accent-glow);
+        }
+        .trust-badge-icon svg { width: 20px; height: 20px; stroke: var(--accent); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .trust-badge-text strong {
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1px;
+        }
+        .trust-badge-text span {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* The form card */
+        .contact-form-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-form-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: var(--gradient-accent);
+        }
+        .contact-form-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+        .contact-form-card > p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+        }
+        .cf-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+        .cf-field { margin-bottom: 14px; }
+        .cf-field label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+        .cf-field input,
+        .cf-field select,
+        .cf-field textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-main);
+            font-size: 0.9rem;
+            color: var(--text);
+            background: var(--bg);
+            transition: border-color 0.3s, box-shadow 0.3s;
+            outline: none;
+        }
+        .cf-field input:focus,
+        .cf-field select:focus,
+        .cf-field textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+        .cf-field textarea { resize: vertical; min-height: 100px; }
+        .cf-field input::placeholder,
+        .cf-field textarea::placeholder { color: var(--text-muted); }
+
+        .cf-submit {
+            width: 100%;
+            padding: 14px 24px;
+            background: var(--gradient-accent);
+            border: none;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-main);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s;
+            margin-top: 8px;
+        }
+        .cf-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(200,152,44,0.35);
+        }
+        .cf-submit svg { width: 20px; height: 20px; }
+        .cf-divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 20px 0;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+        .cf-divider::before,
+        .cf-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+        .cf-alt-btns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .cf-alt-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 16px;
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-main);
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text);
+            background: var(--bg);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .cf-alt-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-glow);
+        }
+        .cf-alt-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 100px 0;
+            background: var(--bg-light);
+        }
+        .faq-grid {
+            max-width: 740px;
+            margin: 48px auto 0;
+        }
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        .faq-item:hover { border-color: var(--border-hover); }
+        .faq-item.open { border-color: var(--accent); box-shadow: var(--shadow-sm); }
+        .faq-q {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 24px;
+            cursor: pointer;
+            gap: 16px;
+        }
+        .faq-q h3 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin: 0;
+        }
+        .faq-toggle {
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s;
+        }
+        .faq-toggle svg { width: 14px; height: 14px; stroke: var(--text-secondary); fill: none; stroke-width: 2; transition: transform 0.3s; }
+        .faq-item.open .faq-toggle { background: var(--accent-glow); border-color: var(--accent); }
+        .faq-item.open .faq-toggle svg { stroke: var(--accent); transform: rotate(180deg); }
+        .faq-a {
+            display: none;
+            padding: 0 24px 20px;
+        }
+        .faq-item.open .faq-a { display: block; }
+        .faq-a p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .contato-hero-inner { grid-template-columns: 1fr; gap: 40px; }
+            .form-grid { grid-template-columns: 1fr; gap: 40px; }
+            .trust-badges { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .contato-hero { padding: 130px 0 60px; }
+            .cf-row { grid-template-columns: 1fr; }
+            .cf-alt-btns { grid-template-columns: 1fr; }
+            .trust-badges { grid-template-columns: 1fr; }
+            .contact-form-card { padding: 28px 22px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header">
+    <div class="wrap header-inner">
+        <a href="index.html" class="logo"><img src="logo.png" alt="A&E Painéis"></a>
+        <nav class="nav" id="mainNav">
+            <a href="index.html" class="nav-link">Home</a>
+            <div class="nav-dropdown">
+                <a href="#" class="nav-link nav-dropdown-toggle">Catálogo de Produtos<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-has-sub">
+                        <a href="barramento-padrao-din.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Linha DIN Standard</a>
+                        <div class="dropdown-submenu">
+                            <a href="barramento-padrao-din.html#bifasico-100a">Bifásico 100A</a>
+                            <a href="barramento-padrao-din.html#bifasico-150a">Bifásico 150A</a>
+                            <a href="barramento-padrao-din.html#bifasico-225a">Bifásico 225A</a>
+                            <a href="barramento-padrao-din.html#trifasico-100a">Trifásico 100A</a>
+                            <a href="barramento-padrao-din.html#trifasico-150a">Trifásico 150A</a>
+                            <a href="barramento-padrao-din.html#trifasico-225a">Trifásico 225A</a>
+                        </div>
+                    </div>
+                    <a href="barramento-especial-din.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Linha DIN Sob Medida</a>
+                    <a href="barramento-neutro-terra.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Barra de Neutro e Terra</a>
+                    <a href="barramentos-especiais.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Soluções Sob Projeto</a>
+                    <a href="barramento-derivacao.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Barramento de Derivação</a>
+                </div>
+            </div>
+            <a href="empresa.html" class="nav-link">Empresa</a>
+            <a href="contato.html" class="nav-link active">Contato</a>
+            <a href="contato.html" class="nav-cta">Fale Conosco</a>
+        </nav>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</header>
+
+<!-- HERO CONTATO -->
+<section class="contato-hero">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="hero-glow-line"></div>
+    <div class="wrap">
+        <div class="contato-hero-inner">
+            <div class="contato-hero-text reveal">
+                <div class="contato-hero-badge">
+                    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                    Fale Conosco
+                </div>
+                <h1>Vamos construir o seu <span class="accent">próximo projeto</span> juntos</h1>
+                <p>Orçamento sem compromisso, resposta rápida e atendimento técnico especializado. Estamos prontos para ajudar.</p>
+            </div>
+            <div class="hero-contact-cards reveal reveal-d2">
+                <a href="https://wa.me/5511912214610?text=Olá! Gostaria de solicitar um orçamento." target="_blank" class="hcc hcc-whatsapp">
+                    <div class="hcc-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+                    <div class="hcc-info">
+                        <strong>WhatsApp</strong>
+                        <span>Resposta em minutos</span>
+                    </div>
+                    <div class="hcc-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+                </a>
+                <a href="mailto:aiepaineis@gmail.com" class="hcc hcc-email">
+                    <div class="hcc-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg></div>
+                    <div class="hcc-info">
+                        <strong>E-mail</strong>
+                        <span>aiepaineis@gmail.com</span>
+                    </div>
+                    <div class="hcc-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+                </a>
+                <a href="tel:+5511912214610" class="hcc hcc-phone">
+                    <div class="hcc-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></div>
+                    <div class="hcc-info">
+                        <strong>Telefone</strong>
+                        <span>(11) 91221-4610</span>
+                    </div>
+                    <div class="hcc-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+                </a>
+                <a href="https://instagram.com/aepaineis" target="_blank" class="hcc hcc-insta">
+                    <div class="hcc-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+                    <div class="hcc-info">
+                        <strong>Instagram</strong>
+                        <span>@aepaineis</span>
+                    </div>
+                    <div class="hcc-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FORMULÁRIO + TRUST -->
+<section class="form-section">
+    <div class="wrap">
+        <div class="form-grid">
+            <!-- Left: texto + trust badges -->
+            <div class="form-left reveal">
+                <div class="section-label">Solicite um orçamento</div>
+                <h2>Preencha o formulário e receba sua proposta</h2>
+                <p>Informe os dados do seu projeto e nossa equipe técnica retorna com uma proposta detalhada. Sem compromisso, sem burocracia.</p>
+
+                <div class="trust-badges">
+                    <div class="trust-badge">
+                        <div class="trust-badge-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                        <div class="trust-badge-text">
+                            <strong>Resposta Rápida</strong>
+                            <span>Retorno em até 24h</span>
+                        </div>
+                    </div>
+                    <div class="trust-badge">
+                        <div class="trust-badge-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                        <div class="trust-badge-text">
+                            <strong>Seus Dados Seguros</strong>
+                            <span>Privacidade garantida</span>
+                        </div>
+                    </div>
+                    <div class="trust-badge">
+                        <div class="trust-badge-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+                        <div class="trust-badge-text">
+                            <strong>Sem Compromisso</strong>
+                            <span>Orçamento gratuito</span>
+                        </div>
+                    </div>
+                    <div class="trust-badge">
+                        <div class="trust-badge-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+                        <div class="trust-badge-text">
+                            <strong>200+ Clientes</strong>
+                            <span>Empresas atendidas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: form -->
+            <div class="reveal reveal-d2">
+                <div class="contact-form-card">
+                    <h3>Faça seu orçamento</h3>
+                    <p>Preencha abaixo e envie direto pelo WhatsApp</p>
+                    <form id="contactForm">
+                        <div class="cf-row">
+                            <div class="cf-field">
+                                <label>Nome completo *</label>
+                                <input type="text" id="cfNome" placeholder="Seu nome" required>
+                            </div>
+                            <div class="cf-field">
+                                <label>Empresa</label>
+                                <input type="text" id="cfEmpresa" placeholder="Nome da empresa">
+                            </div>
+                        </div>
+                        <div class="cf-row">
+                            <div class="cf-field">
+                                <label>CNPJ / CPF</label>
+                                <input type="text" id="cfDoc" placeholder="00.000.000/0000-00">
+                            </div>
+                            <div class="cf-field">
+                                <label>Telefone *</label>
+                                <input type="tel" id="cfTel" placeholder="(00) 00000-0000" required>
+                            </div>
+                        </div>
+                        <div class="cf-field">
+                            <label>Produto de interesse *</label>
+                            <select id="cfProduto" required>
+                                <option value="">Selecione o produto...</option>
+                                <option>Linha DIN Standard (Bifásico/Trifásico)</option>
+                                <option>Linha DIN Sob Medida</option>
+                                <option>Barra de Neutro e Terra</option>
+                                <option>Barramento de Derivação</option>
+                                <option>Soluções Sob Projeto</option>
+                                <option>Painéis Elétricos</option>
+                                <option>Máquinas Especiais</option>
+                                <option>Outro / Não sei ainda</option>
+                            </select>
+                        </div>
+                        <div class="cf-field">
+                            <label>Descreva o que precisa</label>
+                            <textarea id="cfMsg" placeholder="Ex.: Preciso de barramento bifásico 150A com 24 polos, com banho de prata, 10 unidades..."></textarea>
+                        </div>
+                        <button type="submit" class="cf-submit">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 01-4.243-1.214l-.252-.149-2.868.852.852-2.868-.168-.268A8 8 0 1112 20z"/></svg>
+                            Enviar pelo WhatsApp
+                        </button>
+                    </form>
+                    <div class="cf-divider">ou entre em contato diretamente</div>
+                    <div class="cf-alt-btns">
+                        <a href="mailto:aiepaineis@gmail.com" class="cf-alt-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
+                            Enviar E-mail
+                        </a>
+                        <a href="tel:+5511912214610" class="cf-alt-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                            Ligar Agora
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+    <div class="wrap">
+        <div class="section-header reveal" style="text-align:center">
+            <div class="section-label">Dúvidas frequentes</div>
+            <h2 class="section-title">Perguntas Frequentes</h2>
+            <p class="section-sub">As respostas que você precisa antes de fazer seu orçamento</p>
+        </div>
+        <div class="faq-grid">
+            <div class="faq-item reveal">
+                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                    <h3>Qual o prazo de entrega dos barramentos?</h3>
+                    <div class="faq-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+                </div>
+                <div class="faq-a">
+                    <p>O prazo varia conforme o produto e a quantidade. Para barramentos padrão em estoque, a expedição pode ser feita em até 3 dias úteis. Para projetos sob medida, o prazo é combinado na proposta, geralmente entre 5 e 15 dias úteis.</p>
+                </div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                    <h3>Vocês entregam para todo o Brasil?</h3>
+                    <div class="faq-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+                </div>
+                <div class="faq-a">
+                    <p>Sim! Atendemos todo o território nacional com transportadoras parceiras. A embalagem é reforçada para garantir que o produto chegue em perfeitas condições, independente da distância.</p>
+                </div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                    <h3>Qual a diferença entre barramento com e sem banho de prata?</h3>
+                    <div class="faq-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+                </div>
+                <div class="faq-a">
+                    <p>O banho de nitrato de prata proporciona maior resistência à oxidação e melhor contato elétrico nos pontos de conexão. O barramento em cobre nú (sem banho) também oferece excelente condutividade, sendo indicado para aplicações com menor exigência ambiental.</p>
+                </div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                    <h3>Os barramentos são compatíveis com quais marcas de disjuntores?</h3>
+                    <div class="faq-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+                </div>
+                <div class="faq-a">
+                    <p>Nossos barramentos são compatíveis com as principais marcas do mercado, incluindo Schneider Electric, ABB, WEG, Siemens e similares. Para projetos com disjuntores específicos, fabricamos sob medida.</p>
+                </div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                    <h3>Qual o valor mínimo de pedido?</h3>
+                    <div class="faq-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+                </div>
+                <div class="faq-a">
+                    <p>Trabalhamos com pedidos a partir de 1 unidade. Não exigimos quantidade mínima — atendemos desde pequenos projetos até grandes demandas industriais com a mesma dedicação e qualidade.</p>
+                </div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                    <h3>Como funciona o orçamento?</h3>
+                    <div class="faq-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+                </div>
+                <div class="faq-a">
+                    <p>Basta informar o produto, quantidade, configuração desejada e seus dados de contato. Nossa equipe analisa a solicitação e retorna com uma proposta detalhada, incluindo valores, prazos e condições de pagamento. Tudo sem compromisso.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="wrap">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo"><img src="logo.png" alt="A&E Painéis"></a>
+                <p>Engenharia e montagem de painéis elétricos, barramentos de cobre e máquinas especiais. Excelência desde o projeto até a entrega.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navegação</h4>
+                <a href="index.html">Home</a>
+                <a href="empresa.html">Empresa</a>
+                <a href="contato.html">Contato</a>
+            </div>
+            <div class="footer-col">
+                <h4>Produtos</h4>
+                <a href="barramento-padrao-din.html">Linha DIN Standard</a>
+                <a href="barramento-especial-din.html">Linha DIN Sob Medida</a>
+                <a href="barramento-neutro-terra.html">Barra de Neutro e Terra</a>
+                <a href="barramentos-especiais.html">Soluções Sob Projeto</a>
+                <a href="barramento-derivacao.html">Barramento de Derivação</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contato</h4>
+                <a href="tel:+5511912214610">(11) 91221-4610</a>
+                <a href="mailto:aiepaineis@gmail.com">aiepaineis@gmail.com</a>
+                <a href="https://instagram.com/aepaineis" target="_blank">@aepaineis</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 A&E Painéis. Todos os direitos reservados.</p>
+            <div class="footer-socials">
+                <a href="https://instagram.com/aepaineis" target="_blank" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/5511912214610" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374A9.86 9.86 0 012.087 12c.003-5.45 4.437-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/></svg>
+</a>
+
+<script>
+// Header scroll
+window.addEventListener('scroll', () => {
+    document.getElementById('header').classList.toggle('scrolled', window.scrollY > 30);
+});
+
+// Mobile nav
+document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('mainNav').classList.toggle('open');
+});
+document.querySelectorAll('.nav-link').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('mainNav').classList.remove('open'));
+});
+
+// Reveal on scroll
+const ro = new IntersectionObserver(entries => {
+    entries.forEach(el => {
+        if (el.isIntersecting) {
+            el.target.classList.add('visible');
+            ro.unobserve(el.target);
+        }
+    });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+// Contact form → WhatsApp
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const nome = document.getElementById('cfNome').value;
+    const empresa = document.getElementById('cfEmpresa').value;
+    const doc = document.getElementById('cfDoc').value;
+    const tel = document.getElementById('cfTel').value;
+    const produto = document.getElementById('cfProduto').value;
+    const msg = document.getElementById('cfMsg').value;
+
+    const texto = encodeURIComponent(
+        `Olá! Gostaria de solicitar um orçamento.\n\n` +
+        `Nome: ${nome}\n` +
+        (empresa ? `Empresa: ${empresa}\n` : '') +
+        (doc ? `CNPJ/CPF: ${doc}\n` : '') +
+        `Telefone: ${tel}\n` +
+        `Produto: ${produto}\n` +
+        (msg ? `\nDescrição:\n${msg}` : '')
+    );
+    window.open('https://wa.me/5511912214610?text=' + texto, '_blank');
+});
+</script>
+</body>
+</html>

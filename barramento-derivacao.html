@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barramento de Derivação | A&E Painéis</title>
+    <meta name="description" content="Barramentos de derivação em cobre eletrolítico para distribuição de circuitos. Diversas configurações disponíveis.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    .deriv-features { display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px; }
+    .deriv-feat {
+        background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);
+        padding:36px 28px;text-align:center;transition:all 0.35s;position:relative;overflow:hidden;
+    }
+    .deriv-feat::before {
+        content:'';position:absolute;top:0;left:0;right:0;height:4px;
+        background:var(--gradient-accent);transform:scaleX(0);transform-origin:left;transition:transform 0.4s;
+    }
+    .deriv-feat:hover::before { transform:scaleX(1); }
+    .deriv-feat:hover { border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-4px); }
+    .deriv-feat-icon {
+        width:56px;height:56px;border-radius:14px;
+        display:flex;align-items:center;justify-content:center;
+        margin:0 auto 16px;background:var(--accent-glow);
+    }
+    .deriv-feat-icon svg { width:26px;height:26px;stroke:var(--accent);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round; }
+    .deriv-feat h3 { font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--primary);margin-bottom:8px; }
+    .deriv-feat p { font-size:0.9rem;color:var(--text-secondary);line-height:1.7; }
+
+    /* Product Detail */
+    .deriv-detail { padding:80px 0;background:var(--bg); }
+    .deriv-detail-grid { display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center; }
+    .deriv-detail-img {
+        aspect-ratio:4/3;border-radius:var(--radius-lg);overflow:hidden;
+        background:var(--bg-light);display:flex;align-items:center;justify-content:center;
+        border:1px solid var(--border);box-shadow:var(--shadow);
+    }
+    .deriv-detail-img svg { width:64px;height:64px;stroke:var(--text-muted);fill:none;stroke-width:1;opacity:0.3; }
+    .deriv-detail-img img { width:100%;height:100%;object-fit:cover; }
+    .deriv-detail-content .section-label { font-size:0.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:12px; }
+    .deriv-detail-content h2 { font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;color:var(--primary);line-height:1.2;margin-bottom:16px; }
+    .deriv-detail-content p { color:var(--text-secondary);font-size:1rem;line-height:1.8;margin-bottom:16px; }
+    .deriv-specs-list { display:flex;flex-direction:column;gap:8px;margin:20px 0 24px; }
+    .deriv-spec-item {
+        display:flex;align-items:center;gap:10px;
+        padding:10px 14px;background:var(--bg-light);border-radius:var(--radius-sm);
+    }
+    .deriv-spec-item svg { width:16px;height:16px;stroke:var(--accent);fill:none;stroke-width:2.5;flex-shrink:0;stroke-linecap:round;stroke-linejoin:round; }
+    .deriv-spec-item span { font-size:0.9rem;color:var(--text); }
+
+    @media(max-width:1024px) {
+        .deriv-features { grid-template-columns:1fr; }
+        .deriv-detail-grid { grid-template-columns:1fr; }
+    }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header">
+    <div class="wrap header-inner">
+        <a href="index.html" class="logo"><img src="logo.png" alt="A&E Painéis"></a>
+        <nav class="nav" id="mainNav">
+            <a href="index.html" class="nav-link">Home</a>
+            <div class="nav-dropdown">
+                <a href="#" class="nav-link nav-dropdown-toggle active">Catálogo de Produtos<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-has-sub">
+                        <a href="barramento-padrao-din.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Linha DIN Standard</a>
+                        <div class="dropdown-submenu">
+                            <a href="barramento-padrao-din.html#bifasico-100a">Bifásico 100A</a>
+                            <a href="barramento-padrao-din.html#bifasico-150a">Bifásico 150A</a>
+                            <a href="barramento-padrao-din.html#bifasico-225a">Bifásico 225A</a>
+                            <a href="barramento-padrao-din.html#trifasico-100a">Trifásico 100A</a>
+                            <a href="barramento-padrao-din.html#trifasico-150a">Trifásico 150A</a>
+                            <a href="barramento-padrao-din.html#trifasico-225a">Trifásico 225A</a>
+                        </div>
+                    </div>
+                    <a href="barramento-especial-din.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Linha DIN Sob Medida</a>
+                    <a href="barramento-neutro-terra.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Barra de Neutro e Terra</a>
+                    <a href="barramentos-especiais.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Soluções Sob Projeto</a>
+                    <a href="barramento-derivacao.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Barramento de Derivação</a>
+                </div>
+            </div>
+            <a href="empresa.html" class="nav-link">Empresa</a>
+            <a href="contato.html" class="nav-link">Contato</a>
+            <a href="contato.html" class="nav-cta">Fale Conosco</a>
+        </nav>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="product-hero">
+    <div class="wrap">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            <a href="#">Catálogo</a>
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            <span>Barramento de Derivação</span>
+        </div>
+        <h1>Barramento de Derivação</h1>
+        <p>Distribuição precisa de circuitos com barramentos de derivação em cobre eletrolítico de alta pureza</p>
+    </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section class="section" style="background:var(--bg-light)">
+    <div class="wrap">
+        <div class="section-header reveal" style="text-align:center">
+            <div class="section-label">Por que escolher nossos barramentos</div>
+            <h2 class="section-title">Vantagens do Barramento de Derivação A&E</h2>
+        </div>
+        <div class="deriv-features">
+            <div class="deriv-feat reveal reveal-d1">
+                <div class="deriv-feat-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+                <h3>Derivação 40A</h3>
+                <p>Barramento de derivação com capacidade de 40 amperes, ideal para distribuição de circuitos em quadros de baixa tensão.</p>
+            </div>
+            <div class="deriv-feat reveal reveal-d2">
+                <div class="deriv-feat-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+                <h3>Encaixe Perfeito</h3>
+                <p>Compatível com disjuntores das principais marcas do mercado — Schneider, ABB, WEG, Siemens e similares.</p>
+            </div>
+            <div class="deriv-feat reveal reveal-d3">
+                <div class="deriv-feat-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                <h3>Qualidade Garantida</h3>
+                <p>Cobre eletrolítico com opção de banho de nitrato de prata para resistência máxima à oxidação e melhor contato.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- DETALHES DO PRODUTO -->
+<section class="deriv-detail">
+    <div class="wrap">
+        <div class="deriv-detail-grid">
+            <div class="deriv-detail-img reveal">
+                <img src="img/barramento-bifasico-1.jpg" alt="Barramento de Derivação A&E Painéis">
+            </div>
+            <div class="deriv-detail-content reveal reveal-d2">
+                <div class="section-label">Especificações Técnicas</div>
+                <h2>Barramento de Derivação em Cobre Eletrolítico</h2>
+                <p>O barramento de derivação é a peça responsável pela distribuição dos circuitos individuais a partir do barramento principal. Cada polo de derivação alimenta um disjuntor no quadro de distribuição.</p>
+                <p>Fabricado com precisão dimensional para garantir encaixe perfeito e contato elétrico seguro em todas as conexões.</p>
+                <div class="deriv-specs-list">
+                    <div class="deriv-spec-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Corrente de derivação: 40A</span></div>
+                    <div class="deriv-spec-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Cobre eletrolítico de alta pureza (99,9%)</span></div>
+                    <div class="deriv-spec-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Com banho de prata ou cobre nú</span></div>
+                    <div class="deriv-spec-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Compatível com trilho DIN</span></div>
+                    <div class="deriv-spec-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Disponível em diversas configurações de polos</span></div>
+                    <div class="deriv-spec-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Fornecido com isoladores de fixação</span></div>
+                </div>
+                <a href="https://wa.me/5511912214610?text=Olá! Gostaria de orçamento para Barramento de Derivação." target="_blank" class="btn-primary">
+                    <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 01-4.243-1.214l-.252-.149-2.868.852.852-2.868-.168-.268A8 8 0 1112 20z"/></svg>
+                    Solicitar Orçamento
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <div class="wrap">
+        <div class="cta-box reveal">
+            <h2>Precisa de um <span style="color:var(--accent-light)">barramento sob medida</span>?</h2>
+            <p>Fabricamos barramentos de derivação com configurações especiais. Fale com nossa equipe técnica.</p>
+            <div class="cta-actions">
+                <a href="https://wa.me/5511912214610" target="_blank" class="btn-primary">
+                    <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 01-4.243-1.214l-.252-.149-2.868.852.852-2.868-.168-.268A8 8 0 1112 20z"/></svg>
+                    Fale com um Especialista
+                </a>
+                <a href="contato.html" class="btn-outline">Enviar Mensagem</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="wrap">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo"><img src="logo.png" alt="A&E Painéis"></a>
+                <p>Engenharia e montagem de painéis elétricos, barramentos de cobre e máquinas especiais.</p>
+            </div>
+            <div class="footer-col"><h4>Navegação</h4><a href="index.html">Home</a><a href="empresa.html">Empresa</a><a href="contato.html">Contato</a></div>
+            <div class="footer-col"><h4>Produtos</h4><a href="barramento-padrao-din.html">Linha DIN Standard</a><a href="barramento-especial-din.html">Linha DIN Sob Medida</a><a href="barramento-neutro-terra.html">Barra de Neutro e Terra</a><a href="barramentos-especiais.html">Soluções Sob Projeto</a><a href="barramento-derivacao.html">Barramento de Derivação</a></div>
+            <div class="footer-col"><h4>Contato</h4><a href="tel:+5511912214610">(11) 91221-4610</a><a href="mailto:aiepaineis@gmail.com">aiepaineis@gmail.com</a><a href="https://instagram.com/aepaineis" target="_blank">@aepaineis</a></div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2026 A&E Painéis. Todos os direitos reservados.</p></div>
+    </div>
+</footer>
+
+<a href="https://wa.me/5511912214610" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374A9.86 9.86 0 012.087 12c.003-5.45 4.437-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/></svg>
+</a>
+
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('header').classList.toggle('scrolled',window.scrollY>30)});
+document.getElementById('hamburger').addEventListener('click',()=>{document.getElementById('mainNav').classList.toggle('open')});
+document.querySelectorAll('.nav-link').forEach(a=>{a.addEventListener('click',()=>{document.getElementById('mainNav').classList.remove('open')})});
+const ro=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');ro.unobserve(el.target)}})},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soluções Sob Projeto | A&E Painéis</title>
+    <meta name="description" content="Barramentos especiais sob projeto. Soluções elétricas personalizadas para necessidades industriais únicas. Orçamento sem compromisso.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    .sp-hero-content { max-width:700px; }
+    .sp-hero-content h1 span { color:var(--accent-light); }
+
+    /* Process Steps */
+    .process-section { padding:100px 0;background:var(--bg); }
+    .process-grid { display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:48px; }
+    .process-step {
+        text-align:center;padding:32px 20px;background:var(--bg-card);
+        border:1px solid var(--border);border-radius:var(--radius-lg);
+        position:relative;transition:all 0.35s;
+    }
+    .process-step:hover { border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-4px); }
+    .process-num {
+        width:48px;height:48px;border-radius:50%;
+        background:var(--gradient-accent);color:#fff;
+        font-family:var(--font-display);font-weight:800;font-size:1.2rem;
+        display:flex;align-items:center;justify-content:center;margin:0 auto 16px;
+    }
+    .process-step h3 { font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:var(--primary);margin-bottom:8px; }
+    .process-step p { font-size:0.88rem;color:var(--text-secondary);line-height:1.6; }
+
+    /* Solutions Grid */
+    .solutions-section { padding:100px 0;background:var(--bg-light); }
+    .solutions-grid { display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:48px; }
+    .solution-card {
+        background:var(--bg-card);border:1px solid var(--border);
+        border-radius:var(--radius-lg);padding:36px;
+        display:flex;gap:20px;align-items:flex-start;transition:all 0.3s;
+    }
+    .solution-card:hover { border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-3px); }
+    .solution-icon {
+        flex-shrink:0;width:52px;height:52px;border-radius:14px;
+        display:flex;align-items:center;justify-content:center;background:var(--accent-glow);
+    }
+    .solution-icon svg { width:24px;height:24px;stroke:var(--accent);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round; }
+    .solution-info h3 { font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--primary);margin-bottom:6px; }
+    .solution-info p { font-size:0.9rem;color:var(--text-secondary);line-height:1.7; }
+
+    /* Quote Banner */
+    .quote-banner {
+        padding:80px 0;background:var(--gradient-hero);position:relative;overflow:hidden;
+    }
+    .quote-banner::before {
+        content:'';position:absolute;inset:0;
+        background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .quote-banner-inner {
+        position:relative;z-index:2;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;
+    }
+    .quote-banner h2 { font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2rem);font-weight:800;color:#fff;margin-bottom:12px; }
+    .quote-banner p { color:rgba(255,255,255,0.7);font-size:1rem;line-height:1.7;max-width:550px; }
+    .quote-banner-actions { display:flex;flex-direction:column;gap:12px; }
+
+    @media(max-width:1024px) {
+        .process-grid { grid-template-columns:repeat(2,1fr); }
+        .solutions-grid { grid-template-columns:1fr; }
+        .quote-banner-inner { grid-template-columns:1fr;text-align:center; }
+        .quote-banner-actions { flex-direction:row;justify-content:center; }
+    }
+    @media(max-width:768px) {
+        .process-grid { grid-template-columns:1fr; }
+    }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header">
+    <div class="wrap header-inner">
+        <a href="index.html" class="logo"><img src="logo.png" alt="A&E Painéis"></a>
+        <nav class="nav" id="mainNav">
+            <a href="index.html" class="nav-link">Home</a>
+            <div class="nav-dropdown">
+                <a href="#" class="nav-link nav-dropdown-toggle active">Catálogo de Produtos<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-has-sub">
+                        <a href="barramento-padrao-din.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Linha DIN Standard</a>
+                        <div class="dropdown-submenu">
+                            <a href="barramento-padrao-din.html#bifasico-100a">Bifásico 100A</a>
+                            <a href="barramento-padrao-din.html#bifasico-150a">Bifásico 150A</a>
+                            <a href="barramento-padrao-din.html#bifasico-225a">Bifásico 225A</a>
+                            <a href="barramento-padrao-din.html#trifasico-100a">Trifásico 100A</a>
+                            <a href="barramento-padrao-din.html#trifasico-150a">Trifásico 150A</a>
+                            <a href="barramento-padrao-din.html#trifasico-225a">Trifásico 225A</a>
+                        </div>
+                    </div>
+                    <a href="barramento-especial-din.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Linha DIN Sob Medida</a>
+                    <a href="barramento-neutro-terra.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Barra de Neutro e Terra</a>
+                    <a href="barramentos-especiais.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Soluções Sob Projeto</a>
+                    <a href="barramento-derivacao.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Barramento de Derivação</a>
+                </div>
+            </div>
+            <a href="empresa.html" class="nav-link">Empresa</a>
+            <a href="contato.html" class="nav-link">Contato</a>
+            <a href="contato.html" class="nav-cta">Fale Conosco</a>
+        </nav>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="product-hero">
+    <div class="wrap">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            <a href="#">Catálogo</a>
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            <span>Soluções Sob Projeto</span>
+        </div>
+        <div class="sp-hero-content">
+            <h1>Soluções <span>Sob Projeto</span></h1>
+            <p>Quando o padrão não atende, nós projetamos. Barramentos com dimensões, furações e configurações exclusivas para a sua necessidade.</p>
+        </div>
+    </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="process-section">
+    <div class="wrap">
+        <div class="section-header reveal" style="text-align:center">
+            <div class="section-label">Como funciona</div>
+            <h2 class="section-title">Do Projeto à Entrega</h2>
+            <p class="section-sub">Um processo transparente e ágil, do primeiro contato à expedição</p>
+        </div>
+        <div class="process-grid">
+            <div class="process-step reveal reveal-d1">
+                <div class="process-num">1</div>
+                <h3>Briefing Técnico</h3>
+                <p>Você nos envia o desenho, especificações ou a necessidade. Analisamos a viabilidade técnica.</p>
+            </div>
+            <div class="process-step reveal reveal-d2">
+                <div class="process-num">2</div>
+                <h3>Proposta e Projeto</h3>
+                <p>Elaboramos a proposta técnica com prazos, materiais e valores. Tudo aprovado antes de iniciar.</p>
+            </div>
+            <div class="process-step reveal reveal-d3">
+                <div class="process-num">3</div>
+                <h3>Fabricação</h3>
+                <p>Produção na nossa planta com controle de qualidade em cada etapa. Cobre eletrolítico certificado.</p>
+            </div>
+            <div class="process-step reveal reveal-d1">
+                <div class="process-num">4</div>
+                <h3>Entrega Segura</h3>
+                <p>Embalagem reforçada e logística monitorada. Entregamos em todo o Brasil com rastreamento.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SOLUÇÕES -->
+<section class="solutions-section">
+    <div class="wrap">
+        <div class="section-header reveal" style="text-align:center">
+            <div class="section-label">O que fabricamos sob projeto</div>
+            <h2 class="section-title">Tipos de Soluções Especiais</h2>
+        </div>
+        <div class="solutions-grid">
+            <div class="solution-card reveal reveal-d1">
+                <div class="solution-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+                <div class="solution-info">
+                    <h3>Barramentos de Alta Amperagem</h3>
+                    <p>Para projetos que exigem correntes acima de 225A — barramentos dimensionados conforme cálculo térmico e mecânico.</p>
+                </div>
+            </div>
+            <div class="solution-card reveal reveal-d2">
+                <div class="solution-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M2 7h20"/></svg></div>
+                <div class="solution-info">
+                    <h3>Barramentos para CCM e QGBT</h3>
+                    <p>Soluções sob medida para centros de controle de motores e quadros gerais de baixa tensão com geometria específica.</p>
+                </div>
+            </div>
+            <div class="solution-card reveal reveal-d1">
+                <div class="solution-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33"/></svg></div>
+                <div class="solution-info">
+                    <h3>Peças com Furação Especial</h3>
+                    <p>Barras com furação customizada para conexões específicas, adaptação a gabinetes fora de padrão ou disjuntores especiais.</p>
+                </div>
+            </div>
+            <div class="solution-card reveal reveal-d2">
+                <div class="solution-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                <div class="solution-info">
+                    <h3>Conjuntos Completos</h3>
+                    <p>Kits prontos para montagem: barramentos + neutro + terra + isoladores + trilhos, tudo dimensionado para o seu quadro.</p>
+                </div>
+            </div>
+            <div class="solution-card reveal reveal-d1">
+                <div class="solution-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+                <div class="solution-info">
+                    <h3>Barras de Interligação</h3>
+                    <p>Conexões entre módulos, barramentos de transferência e interligação entre quadros adjacentes.</p>
+                </div>
+            </div>
+            <div class="solution-card reveal reveal-d2">
+                <div class="solution-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/></svg></div>
+                <div class="solution-info">
+                    <h3>Suporte de Engenharia</h3>
+                    <p>Nossa equipe técnica auxilia na definição de materiais, dimensionamento e compatibilidade com o restante do projeto.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- QUOTE BANNER -->
+<section class="quote-banner">
+    <div class="wrap">
+        <div class="quote-banner-inner reveal">
+            <div>
+                <h2>Tem um projeto que precisa de <span style="color:var(--accent-light)">solução especial</span>?</h2>
+                <p>Envie seu desenho técnico ou especificações e nossa equipe retorna com uma proposta personalizada em até 24h.</p>
+            </div>
+            <div class="quote-banner-actions">
+                <a href="https://wa.me/5511912214610?text=Olá! Tenho um projeto que precisa de barramento especial sob medida. Gostaria de enviar as especificações." target="_blank" class="btn-primary">
+                    <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 01-4.243-1.214l-.252-.149-2.868.852.852-2.868-.168-.268A8 8 0 1112 20z"/></svg>
+                    Enviar Projeto
+                </a>
+                <a href="contato.html" class="btn-outline" style="border-color:rgba(255,255,255,0.3);color:#fff">Fale Conosco</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="wrap">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo"><img src="logo.png" alt="A&E Painéis"></a>
+                <p>Engenharia e montagem de painéis elétricos, barramentos de cobre e máquinas especiais.</p>
+            </div>
+            <div class="footer-col"><h4>Navegação</h4><a href="index.html">Home</a><a href="empresa.html">Empresa</a><a href="contato.html">Contato</a></div>
+            <div class="footer-col"><h4>Produtos</h4><a href="barramento-padrao-din.html">Linha DIN Standard</a><a href="barramento-especial-din.html">Linha DIN Sob Medida</a><a href="barramento-neutro-terra.html">Barra de Neutro e Terra</a><a href="barramentos-especiais.html">Soluções Sob Projeto</a><a href="barramento-derivacao.html">Barramento de Derivação</a></div>
+            <div class="footer-col"><h4>Contato</h4><a href="tel:+5511912214610">(11) 91221-4610</a><a href="mailto:aiepaineis@gmail.com">aiepaineis@gmail.com</a><a href="https://instagram.com/aepaineis" target="_blank">@aepaineis</a></div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2026 A&E Painéis. Todos os direitos reservados.</p></div>
+    </div>
+</footer>
+
+<a href="https://wa.me/5511912214610" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374A9.86 9.86 0 012.087 12c.003-5.45 4.437-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/></svg>
+</a>
+
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('header').classList.toggle('scrolled',window.scrollY>30)});
+document.getElementById('hamburger').addEventListener('click',()=>{document.getElementById('mainNav').classList.toggle('open')});
+document.querySelectorAll('.nav-link').forEach(a=>{a.addEventListener('click',()=>{document.getElementById('mainNav').classList.remove('open')})});
+const ro=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');ro.unobserve(el.target)}})},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+</script>
+</body>
+</html>
