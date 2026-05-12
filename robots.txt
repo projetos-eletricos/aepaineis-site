@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://aepaineis.com.br/sitemap.xml
