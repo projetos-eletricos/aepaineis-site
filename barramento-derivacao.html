@@ -30,26 +30,40 @@
     .deriv-feat h3 { font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--primary);margin-bottom:8px; }
     .deriv-feat p { font-size:0.9rem;color:var(--text-secondary);line-height:1.7; }
 
-    /* Product Detail */
-    .deriv-detail { padding:80px 0;background:var(--bg); }
-    .deriv-detail-grid { display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center; }
-    .deriv-detail-img {
-        aspect-ratio:4/3;border-radius:var(--radius-lg);overflow:hidden;
-        background:var(--bg-light);display:flex;align-items:center;justify-content:center;
-        border:1px solid var(--border);box-shadow:var(--shadow);
+    /* Product Cards */
+    .product-cards-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;margin-top:48px; }
+    .pcard {
+        background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);
+        overflow:hidden;transition:all 0.35s;position:relative;
     }
-    .deriv-detail-img svg { width:64px;height:64px;stroke:var(--text-muted);fill:none;stroke-width:1;opacity:0.3; }
-    .deriv-detail-img img { width:100%;height:100%;object-fit:cover; }
-    .deriv-detail-content .section-label { font-size:0.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:12px; }
-    .deriv-detail-content h2 { font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;color:var(--primary);line-height:1.2;margin-bottom:16px; }
-    .deriv-detail-content p { color:var(--text-secondary);font-size:1rem;line-height:1.8;margin-bottom:16px; }
-    .deriv-specs-list { display:flex;flex-direction:column;gap:8px;margin:20px 0 24px; }
-    .deriv-spec-item {
-        display:flex;align-items:center;gap:10px;
-        padding:10px 14px;background:var(--bg-light);border-radius:var(--radius-sm);
+    .pcard:hover { border-color:var(--accent);box-shadow:var(--shadow-lg);transform:translateY(-4px); }
+    .pcard-img {
+        width:100%;aspect-ratio:16/10;background:var(--bg-light);
+        display:flex;align-items:center;justify-content:center;
+        border-bottom:1px solid var(--border);overflow:hidden;
     }
-    .deriv-spec-item svg { width:16px;height:16px;stroke:var(--accent);fill:none;stroke-width:2.5;flex-shrink:0;stroke-linecap:round;stroke-linejoin:round; }
-    .deriv-spec-item span { font-size:0.9rem;color:var(--text); }
+    .pcard-img img { width:100%;height:100%;object-fit:cover; }
+    .pcard-body { padding:24px; }
+    .pcard-badge {
+        display:inline-block;padding:3px 10px;border-radius:100px;
+        background:var(--accent-glow);font-size:0.7rem;font-weight:700;
+        color:var(--accent);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px;
+    }
+    .pcard-body h3 { font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--primary);margin-bottom:8px; }
+    .pcard-body p { font-size:0.88rem;color:var(--text-secondary);line-height:1.6;margin-bottom:16px; }
+    .pcard-specs { display:flex;flex-direction:column;gap:6px;margin-bottom:18px; }
+    .pcard-spec { display:flex;align-items:center;gap:8px;font-size:0.82rem;color:var(--text); }
+    .pcard-spec svg { width:14px;height:14px;stroke:var(--accent);fill:none;stroke-width:2.5;flex-shrink:0; }
+    .pcard-actions { display:flex;gap:8px; }
+    .pcard-btn {
+        flex:1;display:inline-flex;align-items:center;justify-content:center;gap:6px;
+        padding:11px 16px;border-radius:var(--radius-sm);border:none;cursor:pointer;
+        font-family:var(--font-main);font-weight:600;font-size:0.82rem;
+        transition:all 0.25s;text-decoration:none;
+    }
+    .pcard-btn-primary { background:var(--gradient-accent);color:#fff; }
+    .pcard-btn-primary:hover { transform:translateY(-2px);box-shadow:0 8px 25px rgba(200,152,44,0.3); }
+    .pcard-btn svg { width:15px;height:15px; }
 
     @media(max-width:1024px) {
         .deriv-features { grid-template-columns:1fr; }
@@ -136,30 +150,99 @@
     </div>
 </section>
 
-<!-- DETALHES DO PRODUTO -->
-<section class="deriv-detail">
+<!-- PRODUTOS -->
+<section class="section">
     <div class="wrap">
-        <div class="deriv-detail-grid">
-            <div class="deriv-detail-img reveal">
-                <img src="img/barramento-bifasico-1.jpg" alt="Barramento de Derivação A&E Painéis">
-            </div>
-            <div class="deriv-detail-content reveal reveal-d2">
-                <div class="section-label">Especificações Técnicas</div>
-                <h2>Barramento de Derivação em Cobre Eletrolítico</h2>
-                <p>O barramento de derivação é a peça responsável pela distribuição dos circuitos individuais a partir do barramento principal. Cada polo de derivação alimenta um disjuntor no quadro de distribuição.</p>
-                <p>Fabricado com precisão dimensional para garantir encaixe perfeito e contato elétrico seguro em todas as conexões.</p>
-                <div class="deriv-specs-list">
-                    <div class="deriv-spec-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Corrente de derivação: 40A</span></div>
-                    <div class="deriv-spec-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Cobre eletrolítico de alta pureza (99,9%)</span></div>
-                    <div class="deriv-spec-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Com banho de prata ou cobre nú</span></div>
-                    <div class="deriv-spec-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Compatível com trilho DIN</span></div>
-                    <div class="deriv-spec-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Disponível em diversas configurações de polos</span></div>
-                    <div class="deriv-spec-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Fornecido com isoladores de fixação</span></div>
+        <div class="section-header reveal" style="text-align:center">
+            <div class="section-label">Nossos Modelos</div>
+            <h2 class="section-title">Linha de Barramentos de Derivação</h2>
+            <p class="section-sub">Diversos modelos para distribuição de circuitos em quadros de baixa tensão</p>
+        </div>
+        <div class="product-cards-grid">
+            <!-- 1 -->
+            <div class="pcard reveal reveal-d1">
+                <div class="pcard-img"><img src="img/bar-derivacao-01.webp" alt="Barramento de Derivação Modelo 1 A&E Painéis"></div>
+                <div class="pcard-body">
+                    <span class="pcard-badge">Derivação</span>
+                    <h3>Barramento de Derivação — Bifásico</h3>
+                    <p>Barramento de derivação bifásico em cobre eletrolítico para distribuição de circuitos em quadros de baixa tensão. Encaixe preciso em disjuntores das principais marcas.</p>
+                    <div class="pcard-specs">
+                        <div class="pcard-spec"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Cobre eletrolítico 99,9% de pureza</span></div>
+                        <div class="pcard-spec"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Configuração bifásica</span></div>
+                        <div class="pcard-spec"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Com ou sem banho de prata</span></div>
+                    </div>
+                    <div class="pcard-actions">
+                        <a href="https://wa.me/5511924898593?text=Olá! Gostaria de orçamento para Barramento de Derivação Bifásico." target="_blank" class="pcard-btn pcard-btn-primary"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 01-4.243-1.214l-.252-.149-2.868.852.852-2.868-.168-.268A8 8 0 1112 20z"/></svg>Solicitar Orçamento</a>
+                    </div>
                 </div>
-                <a href="https://wa.me/5511924898593?text=Olá! Gostaria de orçamento para Barramento de Derivação." target="_blank" class="btn-primary">
-                    <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 01-4.243-1.214l-.252-.149-2.868.852.852-2.868-.168-.268A8 8 0 1112 20z"/></svg>
-                    Solicitar Orçamento
-                </a>
+            </div>
+            <!-- 2 -->
+            <div class="pcard reveal reveal-d2">
+                <div class="pcard-img"><img src="img/bar-derivacao-02.webp" alt="Barramento de Derivação Modelo 2 A&E Painéis"></div>
+                <div class="pcard-body">
+                    <span class="pcard-badge">Derivação</span>
+                    <h3>Barramento de Derivação — Trifásico</h3>
+                    <p>Barramento de derivação trifásico para alimentação de circuitos trifásicos em quadros de distribuição. Fabricado com precisão dimensional.</p>
+                    <div class="pcard-specs">
+                        <div class="pcard-spec"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Configuração trifásica (3 polos)</span></div>
+                        <div class="pcard-spec"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Compatível com trilho DIN</span></div>
+                        <div class="pcard-spec"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Fornecido com isoladores</span></div>
+                    </div>
+                    <div class="pcard-actions">
+                        <a href="https://wa.me/5511924898593?text=Olá! Gostaria de orçamento para Barramento de Derivação Trifásico." target="_blank" class="pcard-btn pcard-btn-primary"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 01-4.243-1.214l-.252-.149-2.868.852.852-2.868-.168-.268A8 8 0 1112 20z"/></svg>Solicitar Orçamento</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 3 -->
+            <div class="pcard reveal reveal-d3">
+                <div class="pcard-img"><img src="img/bar-derivacao-03.webp" alt="Barramento de Derivação Modelo 3 A&E Painéis"></div>
+                <div class="pcard-body">
+                    <span class="pcard-badge">Derivação</span>
+                    <h3>Barramento de Derivação — Conexão Direta</h3>
+                    <p>Modelo com conexão direta no barramento principal, eliminando necessidade de cabos intermediários. Instalação rápida e contato seguro.</p>
+                    <div class="pcard-specs">
+                        <div class="pcard-spec"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Conexão direta sem cabos</span></div>
+                        <div class="pcard-spec"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Instalação simplificada</span></div>
+                        <div class="pcard-spec"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Contato elétrico otimizado</span></div>
+                    </div>
+                    <div class="pcard-actions">
+                        <a href="https://wa.me/5511924898593?text=Olá! Gostaria de orçamento para Barramento de Derivação Conexão Direta." target="_blank" class="pcard-btn pcard-btn-primary"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 01-4.243-1.214l-.252-.149-2.868.852.852-2.868-.168-.268A8 8 0 1112 20z"/></svg>Solicitar Orçamento</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 4 -->
+            <div class="pcard reveal reveal-d1">
+                <div class="pcard-img"><img src="img/bar-derivacao-04.webp" alt="Barramento de Derivação Modelo 4 A&E Painéis"></div>
+                <div class="pcard-body">
+                    <span class="pcard-badge">Derivação</span>
+                    <h3>Barramento de Derivação — Multi-polos</h3>
+                    <p>Barramento com múltiplas saídas de derivação para quadros com grande quantidade de circuitos. Ideal para projetos comerciais e industriais.</p>
+                    <div class="pcard-specs">
+                        <div class="pcard-spec"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Múltiplas saídas de derivação</span></div>
+                        <div class="pcard-spec"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Para quadros comerciais e industriais</span></div>
+                        <div class="pcard-spec"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Diversas configurações de polos</span></div>
+                    </div>
+                    <div class="pcard-actions">
+                        <a href="https://wa.me/5511924898593?text=Olá! Gostaria de orçamento para Barramento de Derivação Multi-polos." target="_blank" class="pcard-btn pcard-btn-primary"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 01-4.243-1.214l-.252-.149-2.868.852.852-2.868-.168-.268A8 8 0 1112 20z"/></svg>Solicitar Orçamento</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 5 -->
+            <div class="pcard reveal reveal-d2">
+                <div class="pcard-img"><img src="img/bar-derivacao-05.webp" alt="Barramento de Derivação Modelo 5 A&E Painéis"></div>
+                <div class="pcard-body">
+                    <span class="pcard-badge">Sob Medida</span>
+                    <h3>Barramento de Derivação — Sob Projeto</h3>
+                    <p>Fabricação personalizada conforme especificação técnica do cliente. Dimensões, polos e acabamento sob medida para seu projeto.</p>
+                    <div class="pcard-specs">
+                        <div class="pcard-spec"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Dimensões conforme projeto</span></div>
+                        <div class="pcard-spec"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Banho de prata ou cobre nú</span></div>
+                        <div class="pcard-spec"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Prazo ágil de fabricação</span></div>
+                    </div>
+                    <div class="pcard-actions">
+                        <a href="https://wa.me/5511924898593?text=Olá! Gostaria de orçamento para Barramento de Derivação Sob Medida." target="_blank" class="pcard-btn pcard-btn-primary"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 01-4.243-1.214l-.252-.149-2.868.852.852-2.868-.168-.268A8 8 0 1112 20z"/></svg>Solicitar Orçamento</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
