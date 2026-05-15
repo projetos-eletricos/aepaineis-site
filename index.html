@@ -151,10 +151,10 @@
 <div class="stats-bar">
     <div class="wrap">
         <div class="stats-grid reveal">
-            <div class="stat-item"><div class="stat-num" data-count="500">0</div><div class="stat-label">Projetos Realizados</div></div>
-            <div class="stat-item"><div class="stat-num" data-count="15">0</div><div class="stat-label">Anos de Experiência</div></div>
-            <div class="stat-item"><div class="stat-num" data-count="200">0</div><div class="stat-label">Clientes Atendidos</div></div>
-            <div class="stat-item"><div class="stat-num" data-count="100">0</div><div class="stat-label">% Satisfação</div></div>
+            <div class="stat-item"><div class="stat-num" data-count="3000">0</div><div class="stat-label">Projetos Realizados</div></div>
+            <div class="stat-item"><div class="stat-num" data-count="20">0</div><div class="stat-label">Anos de Experiência</div></div>
+            <div class="stat-item"><div class="stat-num" data-count="1000">0</div><div class="stat-label">Clientes Atendidos</div></div>
+            <div class="stat-item"><div class="stat-num" data-count="0">0</div><div class="stat-label">Devoluções</div></div>
         </div>
     </div>
 </div>
@@ -378,7 +378,7 @@ document.getElementById('hamburger').addEventListener('click',()=>{document.getE
 document.querySelectorAll('.nav-link').forEach(a=>{a.addEventListener('click',()=>{document.getElementById('mainNav').classList.remove('open')})});
 const ro=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');ro.unobserve(el.target)}})},{threshold:0.1});
 document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
-const co=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){const t=parseInt(el.target.dataset.count);let c=0;const inc=t/50;const ti=setInterval(()=>{c+=inc;if(c>=t){el.target.textContent=t+(t===100?'%':'+');clearInterval(ti)}else{el.target.textContent=Math.floor(c)}},30);co.unobserve(el.target)}})},{threshold:0.5});
+const co=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){const t=parseInt(el.target.dataset.count);let c=0;const inc=t/50;const ti=setInterval(()=>{c+=inc;if(c>=t){el.target.textContent=t+(t===0?'':t===100?'%':'+');clearInterval(ti)}else{el.target.textContent=Math.floor(c)}},30);co.unobserve(el.target)}})},{threshold:0.5});
 document.querySelectorAll('.stat-num[data-count]').forEach(el=>co.observe(el));
 
 // Hero Carousel
