@@ -451,6 +451,14 @@ ul { list-style:none; }
     height:420px;
     cursor:pointer;
 }
+/* Override reveal transform for flip cards — translateY breaks 3D perspective */
+.flip-card.reveal {
+    transform:none;
+    transition:opacity 0.7s ease;
+}
+.flip-card.reveal.visible {
+    transform:none;
+}
 .flip-card-inner {
     position:relative;
     width:100%;height:100%;
@@ -556,6 +564,46 @@ ul { list-style:none; }
 }
 .flip-card-back .flip-btn svg {
     width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;
+}
+
+/* Flip Cards — Diferenciais (sem foto, menor) */
+.flip-card--diff {
+    height:320px;
+}
+.flip-front--diff {
+    background:#fff;
+    border:1px solid var(--border);
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+    padding:36px 28px;
+    text-align:center;
+    transition:border-color 0.3s, box-shadow 0.3s;
+}
+.flip-card--diff:hover .flip-front--diff {
+    border-color:var(--accent);
+    box-shadow:var(--shadow);
+}
+.flip-front--diff h3 {
+    font-family:var(--font-display);font-size:19px;
+    font-weight:700;color:var(--primary);margin-bottom:10px;
+    letter-spacing:-0.02em;
+}
+.flip-front--diff p {
+    font-size:14.5px;color:var(--text-secondary);line-height:1.7;
+    font-weight:400;margin-bottom:16px;
+}
+.flip-front--diff .flip-hint {
+    margin-top:auto;
+}
+.flip-card--diff .flip-card-back {
+    padding:32px 24px;
+}
+.flip-card--diff .flip-card-back p {
+    font-size:13.5px;
+    line-height:1.65;
+}
+.flip-card--diff .flip-stat strong {
+    font-size:20px;
 }
 
 /* =========================================
