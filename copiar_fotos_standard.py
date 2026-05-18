@@ -7,6 +7,8 @@ SRC = r"C:\Users\kauap\OneDrive\Documentos\aepaineis-site\LINHA STANDARD"
 fotos = {
     "BARRAMENTO BIFASICO 1.png": "standard-bifasico-1.png",
     "BARRAMENTO BIFASICO 2.png": "standard-bifasico-2.png",
+    "barramento trifasico 1.png": "standard-trifasico-1.png",
+    "barramento trifasico 2.png": "standard-trifasico-2.png",
 }
 
 for src_name, dst_name in fotos.items():
