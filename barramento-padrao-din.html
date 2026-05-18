@@ -24,12 +24,8 @@
                     <div class="dropdown-has-sub">
                         <a href="barramento-padrao-din.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Linha DIN Standard</a>
                         <div class="dropdown-submenu">
-                            <a href="#bifasico-100a">Bifásico 100A</a>
-                            <a href="#bifasico-150a">Bifásico 150A</a>
-                            <a href="#bifasico-225a">Bifásico 225A</a>
-                            <a href="#trifasico-100a">Trifásico 100A</a>
-                            <a href="#trifasico-150a">Trifásico 150A</a>
-                            <a href="#trifasico-225a">Trifásico 225A</a>
+                            <a href="barramento-padrao-din.html#bifasico">Bifásico</a>
+                            <a href="barramento-padrao-din.html#trifasico">Trifásico</a>
                         </div>
                     </div>
                     <a href="barramento-especial-din.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Linha DIN Sob Medida</a>
@@ -62,174 +58,214 @@
     </div>
 </section>
 
-<!-- PRODUCT CONTENT -->
+<!-- PRODUCT CARDS -->
 <section class="section">
     <div class="wrap">
-        <div class="product-layout">
-            <!-- Gallery -->
-            <div class="product-gallery reveal">
-                <div class="product-main-img" id="mainProductImg">
-                    <img src="img/barramento-trifasico-2.jpg" alt="Barramento Padrão DIN" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius)">
-                </div>
-                <div class="product-thumbs">
-                    <div class="product-thumb active" onclick="changeImg(this,'img/barramento-trifasico-2.jpg')"><img src="img/barramento-trifasico-2.jpg" alt="Trifásico" style="width:100%;height:100%;object-fit:cover;border-radius:6px"></div>
-                    <div class="product-thumb" onclick="changeImg(this,'img/barramento-trifasico-1.jpg')"><img src="img/barramento-trifasico-1.jpg" alt="Bifásico" style="width:100%;height:100%;object-fit:cover;border-radius:6px"></div>
-                    <div class="product-thumb" onclick="changeImg(this,'img/barramento-trifasico-4.jpg')"><img src="img/barramento-trifasico-4.jpg" alt="Conjunto" style="width:100%;height:100%;object-fit:cover;border-radius:6px"></div>
-                    <div class="product-thumb" onclick="changeImg(this,'img/barramento-bifasico-1.jpg')"><img src="img/barramento-bifasico-1.jpg" alt="Bifásico" style="width:100%;height:100%;object-fit:cover;border-radius:6px"></div>
-                </div>
+        <style>
+            .std-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:32px;margin-bottom:48px}
+            .std-card{background:#fff;border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;transition:box-shadow .3s,border-color .3s}
+            .std-card:hover{border-color:var(--accent);box-shadow:var(--shadow)}
+            .std-card-img{width:100%;background:#fff;display:flex;align-items:center;justify-content:center;padding:20px;border-bottom:1px solid var(--border)}
+            .std-card-img img{width:100%;height:auto;object-fit:contain;max-height:320px}
+            .std-card-body{padding:28px}
+            .std-card-badge{display:inline-block;background:var(--primary);color:#fff;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:14px}
+            .std-card-body h3{font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--primary);margin-bottom:10px}
+            .std-card-body p{font-size:14.5px;color:var(--text-secondary);line-height:1.7;margin-bottom:18px}
+            .std-card-specs{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+            .std-card-specs span{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--text-secondary)}
+            .std-card-specs span svg{width:16px;height:16px;stroke:var(--accent);stroke-width:2.5;fill:none;flex-shrink:0}
+            .std-card-gallery{display:flex;gap:8px;padding:0 28px 20px}
+            .std-card-gallery img{width:72px;height:72px;object-fit:cover;border-radius:8px;border:1px solid var(--border);cursor:pointer;transition:border-color .2s}
+            .std-card-gallery img:hover{border-color:var(--accent)}
+            .std-quote{background:#fff;border-radius:var(--radius);border:1px solid var(--border);padding:36px;box-shadow:var(--shadow)}
+            .std-quote h3{font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--primary);margin-bottom:6px}
+            .std-quote>p{font-size:14px;color:var(--text-secondary);margin-bottom:24px}
+            .std-quote .qf-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+            .std-quote label{font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:6px;display:block}
+            .std-quote input,.std-quote select,.std-quote textarea{width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:14px;font-family:var(--font-body);transition:border-color .2s}
+            .std-quote input:focus,.std-quote select:focus,.std-quote textarea:focus{outline:none;border-color:var(--accent)}
+            .std-quote textarea{resize:vertical;min-height:80px}
+            @media(max-width:600px){.std-grid{grid-template-columns:1fr}.std-quote .qf-grid{grid-template-columns:1fr}}
+        </style>
 
-                <p style="margin-top:28px;font-size:15px;color:var(--text-secondary);line-height:1.8">
-                    Projetado para máxima eficiência e durabilidade, este barramento utiliza cobre eletrolítico de alta pureza, com banho de nitrato de prata para garantir maior resistência à oxidação e melhor condução elétrica.
-                </p>
-
-                <div style="margin-top:24px">
-                    <h3 class="product-specs-title">Descrição do Produto</h3>
-                    <div class="product-spec-list">
-                        <div class="product-spec-item">
-                            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                            <span>Barramento construído em cobre eletrolítico com banho de nitrato de prata ou em cobre nú</span>
-                        </div>
-                        <div class="product-spec-item">
-                            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                            <span>Capacidade de condução de corrente elétrica</span>
-                        </div>
-                        <div class="product-spec-item">
-                            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                            <span>Barramento principal 100, 150 ou 225 amperes</span>
-                        </div>
-                        <div class="product-spec-item">
-                            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                            <span>Barramento de derivação 40 amperes</span>
-                        </div>
-                        <div class="product-spec-item">
-                            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                            <span>Barramentos fornecidos com isoladores e trilhos</span>
-                        </div>
-                        <div class="product-spec-item">
-                            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                            <span>Kit barramento para ser interligado através de cabos ao disjuntor geral (principal)</span>
-                        </div>
+        <!-- Product Cards -->
+        <div class="std-grid">
+            <!-- BIFÁSICO -->
+            <div class="std-card reveal" id="bifasico">
+                <div class="std-card-img">
+                    <img src="img/standard-bifasico-1.png" alt="Barramento Bifásico Standard" id="bifImg">
+                </div>
+                <div class="std-card-gallery">
+                    <img src="img/standard-bifasico-1.png" alt="Bifásico 1" onclick="document.getElementById('bifImg').src=this.src">
+                    <img src="img/standard-bifasico-2.png" alt="Bifásico 2" onclick="document.getElementById('bifImg').src=this.src">
+                </div>
+                <div class="std-card-body">
+                    <span class="std-card-badge">Bifásico</span>
+                    <h3>Barramento Bifásico Standard</h3>
+                    <p>Barramento bifásico em cobre eletrolítico de alta pureza com banho de nitrato de prata. Disponível de 100A a 225A, conforme a necessidade do seu projeto.</p>
+                    <div class="std-card-specs">
+                        <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Corrente nominal: 100A a 225A</span>
+                        <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Configuração: Bifásico</span>
+                        <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Cobre eletrolítico com banho de prata</span>
+                        <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Fornecido com isoladores e trilhos DIN</span>
+                        <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Derivação 40A inclusa</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Quote Form -->
-            <div class="reveal reveal-d2">
-                <div class="quote-form">
-                    <h3>Faça seu orçamento</h3>
-                    <form id="quoteForm">
-                        <div class="qf-grid">
-                            <input type="text" placeholder="CNPJ / CPF *" id="qCnpj" required>
-                            <input type="text" placeholder="Seu nome *" id="qNome" required>
-                        </div>
-                        <div class="qf-grid" style="margin-top:14px">
-                            <div>
-                                <label style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:6px;display:block">Produto *</label>
-                                <input type="text" id="qProduto" readonly style="background:var(--bg-light);font-weight:600;color:var(--primary);cursor:default">
-                            </div>
-                            <div>
-                                <label style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:6px;display:block">Cobre Eletrolítico *</label>
-                                <select id="qCobre">
-                                    <option>Com banho</option>
-                                    <option>Sem banho (cobre nú)</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="qf-grid" style="margin-top:14px">
-                            <div>
-                                <label style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:6px;display:block">Quantidade de Polos *</label>
-                                <select id="qPolos">
-                                    <option>12 Polos</option>
-                                    <option>14 Polos</option>
-                                    <option>16 Polos</option>
-                                    <option>18 Polos</option>
-                                    <option>20 Polos</option>
-                                    <option>22 Polos</option>
-                                    <option>24 Polos</option>
-                                    <option>26 Polos</option>
-                                    <option>28 Polos</option>
-                                    <option>30 Polos</option>
-                                    <option>32 Polos</option>
-                                    <option>34 Polos</option>
-                                    <option>36 Polos</option>
-                                    <option>38 Polos</option>
-                                    <option>40 Polos</option>
-                                    <option>42 Polos</option>
-                                    <option>44 Polos</option>
-                                    <option>46 Polos</option>
-                                    <option>48 Polos</option>
-                                    <option>50 Polos</option>
-                                    <option>52 Polos</option>
-                                    <option>54 Polos</option>
-                                    <option>56 Polos</option>
-                                    <option>58 Polos</option>
-                                    <option>60 Polos</option>
-                                    <option>62 Polos</option>
-                                    <option>64 Polos</option>
-                                    <option>66 Polos</option>
-                                    <option>68 Polos</option>
-                                    <option>70 Polos</option>
-                                    <option>72 Polos</option>
-                                    <option>74 Polos</option>
-                                    <option>76 Polos</option>
-                                    <option>78 Polos</option>
-                                    <option>80 Polos</option>
-                                    <option>82 Polos</option>
-                                    <option>84 Polos</option>
-                                    <option>86 Polos</option>
-                                    <option>88 Polos</option>
-                                    <option>90 Polos</option>
-                                    <option>92 Polos</option>
-                                    <option>94 Polos</option>
-                                    <option>96 Polos</option>
-                                    <option>98 Polos</option>
-                                    <option>100 Polos</option>
-                                    <option>102 Polos</option>
-                                    <option>104 Polos</option>
-                                    <option>106 Polos</option>
-                                    <option>108 Polos</option>
-                                    <option>110 Polos</option>
-                                    <option>112 Polos</option>
-                                    <option>114 Polos</option>
-                                    <option>116 Polos</option>
-                                    <option>118 Polos</option>
-                                    <option>120 Polos</option>
-                                </select>
-                            </div>
-                            <input type="number" placeholder="Quantidade de peças *" id="qQtd" min="1" required style="margin-top:22px">
-                        </div>
-                        <div class="qf-grid" style="margin-top:14px">
-                            <div>
-                                <label style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:6px;display:block">Vai precisar de Terra?</label>
-                                <div style="display:flex;gap:8px;align-items:center">
-                                    <select id="qTerra" onchange="document.getElementById('terraFuros').style.display=this.selectedIndex===1?'block':'none'" style="flex:1">
-                                        <option>Não</option>
-                                        <option>Sim</option>
-                                    </select>
-                                    <input type="number" id="terraFuros" placeholder="Qtd. furos" min="1" style="display:none;width:100px;flex-shrink:0">
-                                </div>
-                            </div>
-                            <div>
-                                <label style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:6px;display:block">Vai precisar de Neutro?</label>
-                                <div style="display:flex;gap:8px;align-items:center">
-                                    <select id="qNeutro" onchange="document.getElementById('neutroFuros').style.display=this.selectedIndex===1?'block':'none'" style="flex:1">
-                                        <option>Não</option>
-                                        <option>Sim</option>
-                                    </select>
-                                    <input type="number" id="neutroFuros" placeholder="Qtd. furos" min="1" style="display:none;width:100px;flex-shrink:0">
-                                </div>
-                            </div>
-                        </div>
-                        <textarea placeholder="Adicione sua observação..." id="qObs" class="qf-full" style="margin-top:14px"></textarea>
-                        <div class="qf-actions">
-                            <button type="submit" class="btn-primary">
-                                <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 01-4.243-1.214l-.252-.149-2.868.852.852-2.868-.168-.268A8 8 0 1112 20z"/></svg>
-                                Orçar pelo WhatsApp
-                            </button>
-                        </div>
-                    </form>
+            <!-- TRIFÁSICO -->
+            <div class="std-card reveal reveal-d2" id="trifasico">
+                <div class="std-card-img">
+                    <img src="img/barramento-trifasico-2.jpg" alt="Barramento Trifásico Standard" id="triImg">
+                </div>
+                <div class="std-card-gallery">
+                    <img src="img/barramento-trifasico-2.jpg" alt="Trifásico 1" onclick="document.getElementById('triImg').src=this.src">
+                    <img src="img/barramento-trifasico-1.jpg" alt="Trifásico 2" onclick="document.getElementById('triImg').src=this.src">
+                    <img src="img/barramento-trifasico-4.jpg" alt="Trifásico 3" onclick="document.getElementById('triImg').src=this.src">
+                </div>
+                <div class="std-card-body">
+                    <span class="std-card-badge">Trifásico</span>
+                    <h3>Barramento Trifásico Standard</h3>
+                    <p>Barramento trifásico em cobre eletrolítico de alta pureza. Disponível de 100A a 225A, ideal para quadros de distribuição trifásicos industriais e comerciais.</p>
+                    <div class="std-card-specs">
+                        <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Corrente nominal: 100A a 225A</span>
+                        <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Configuração: Trifásico</span>
+                        <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Cobre eletrolítico com banho de prata</span>
+                        <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Fornecido com isoladores e trilhos DIN</span>
+                        <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Derivação 40A inclusa</span>
+                    </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Quote Form -->
+        <div class="std-quote reveal" id="orcamento">
+            <h3>Faça seu Orçamento</h3>
+            <p>Selecione o produto, a amperagem desejada e envie seu pedido diretamente pelo WhatsApp.</p>
+            <form id="quoteForm">
+                <div class="qf-grid">
+                    <input type="text" placeholder="CNPJ / CPF *" id="qCnpj" required>
+                    <input type="text" placeholder="Seu nome *" id="qNome" required>
+                </div>
+                <div class="qf-grid" style="margin-top:14px">
+                    <div>
+                        <label>Produto *</label>
+                        <select id="qProduto">
+                            <option>Barramento Bifásico</option>
+                            <option>Barramento Trifásico</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Amperagem *</label>
+                        <select id="qAmperagem">
+                            <option>100A</option>
+                            <option>150A</option>
+                            <option>225A</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="qf-grid" style="margin-top:14px">
+                    <div>
+                        <label>Cobre Eletrolítico *</label>
+                        <select id="qCobre">
+                            <option>Com banho de prata</option>
+                            <option>Sem banho (cobre nú)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Quantidade de Polos *</label>
+                        <select id="qPolos">
+                            <option>12 Polos</option>
+                            <option>14 Polos</option>
+                            <option>16 Polos</option>
+                            <option>18 Polos</option>
+                            <option>20 Polos</option>
+                            <option>22 Polos</option>
+                            <option>24 Polos</option>
+                            <option>26 Polos</option>
+                            <option>28 Polos</option>
+                            <option>30 Polos</option>
+                            <option>32 Polos</option>
+                            <option>34 Polos</option>
+                            <option>36 Polos</option>
+                            <option>38 Polos</option>
+                            <option>40 Polos</option>
+                            <option>42 Polos</option>
+                            <option>44 Polos</option>
+                            <option>46 Polos</option>
+                            <option>48 Polos</option>
+                            <option>50 Polos</option>
+                            <option>52 Polos</option>
+                            <option>54 Polos</option>
+                            <option>56 Polos</option>
+                            <option>58 Polos</option>
+                            <option>60 Polos</option>
+                            <option>62 Polos</option>
+                            <option>64 Polos</option>
+                            <option>66 Polos</option>
+                            <option>68 Polos</option>
+                            <option>70 Polos</option>
+                            <option>72 Polos</option>
+                            <option>74 Polos</option>
+                            <option>76 Polos</option>
+                            <option>78 Polos</option>
+                            <option>80 Polos</option>
+                            <option>82 Polos</option>
+                            <option>84 Polos</option>
+                            <option>86 Polos</option>
+                            <option>88 Polos</option>
+                            <option>90 Polos</option>
+                            <option>92 Polos</option>
+                            <option>94 Polos</option>
+                            <option>96 Polos</option>
+                            <option>98 Polos</option>
+                            <option>100 Polos</option>
+                            <option>102 Polos</option>
+                            <option>104 Polos</option>
+                            <option>106 Polos</option>
+                            <option>108 Polos</option>
+                            <option>110 Polos</option>
+                            <option>112 Polos</option>
+                            <option>114 Polos</option>
+                            <option>116 Polos</option>
+                            <option>118 Polos</option>
+                            <option>120 Polos</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="qf-grid" style="margin-top:14px">
+                    <input type="number" placeholder="Quantidade de peças *" id="qQtd" min="1" required>
+                    <div>
+                        <label>Vai precisar de Terra?</label>
+                        <div style="display:flex;gap:8px;align-items:center">
+                            <select id="qTerra" onchange="document.getElementById('terraFuros').style.display=this.selectedIndex===1?'block':'none'" style="flex:1">
+                                <option>Não</option>
+                                <option>Sim</option>
+                            </select>
+                            <input type="number" id="terraFuros" placeholder="Qtd. furos" min="1" style="display:none;width:100px;flex-shrink:0">
+                        </div>
+                    </div>
+                </div>
+                <div class="qf-grid" style="margin-top:14px">
+                    <div>
+                        <label>Vai precisar de Neutro?</label>
+                        <div style="display:flex;gap:8px;align-items:center">
+                            <select id="qNeutro" onchange="document.getElementById('neutroFuros').style.display=this.selectedIndex===1?'block':'none'" style="flex:1">
+                                <option>Não</option>
+                                <option>Sim</option>
+                            </select>
+                            <input type="number" id="neutroFuros" placeholder="Qtd. furos" min="1" style="display:none;width:100px;flex-shrink:0">
+                        </div>
+                    </div>
+                </div>
+                <textarea placeholder="Adicione sua observação..." id="qObs" style="margin-top:14px;width:100%"></textarea>
+                <div style="margin-top:18px;text-align:center">
+                    <button type="submit" class="btn-primary" style="width:100%;max-width:400px;margin:0 auto">
+                        <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 01-4.243-1.214l-.252-.149-2.868.852.852-2.868-.168-.268A8 8 0 1112 20z"/></svg>
+                        Orçar pelo WhatsApp
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </section>
@@ -306,20 +342,13 @@ document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 
 // Auto-select product from URL hash
 (function(){
-    const map = {
-        'bifasico-100a': 'Barramento Bifásico 100A',
-        'bifasico-150a': 'Barramento Bifásico 150A',
-        'bifasico-225a': 'Barramento Bifásico 225A',
-        'trifasico-100a': 'Barramento Trifásico 100A',
-        'trifasico-150a': 'Barramento Trifásico 150A',
-        'trifasico-225a': 'Barramento Trifásico 225A'
-    };
     const hash = window.location.hash.replace('#','');
-    const input = document.getElementById('qProduto');
-    if(hash && map[hash]) {
-        input.value = map[hash];
-    } else {
-        input.value = 'Barramento Bifásico 100A';
+    const sel = document.getElementById('qProduto');
+    if(hash === 'trifasico') sel.value = 'Barramento Trifásico';
+    // Scroll to hash element
+    if(hash){
+        const el = document.getElementById(hash);
+        if(el) setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'start'}),300);
     }
 })();
 
@@ -332,16 +361,10 @@ document.getElementById('quoteForm').addEventListener('submit', function(e) {
     const terraText = terraVal === 'Sim' ? `Sim — ${terraFuros || '?'} furos` : 'Não';
     const neutroText = neutroVal === 'Sim' ? `Sim — ${neutroFuros || '?'} furos` : 'Não';
     const msg = encodeURIComponent(
-        `Olá! Gostaria de um orçamento.\n\nProduto: ${document.getElementById('qProduto').value}\nCobre: ${document.getElementById('qCobre').value}\nPolos: ${document.getElementById('qPolos').value}\nQuantidade: ${document.getElementById('qQtd').value}\nTerra: ${terraText}\nNeutro: ${neutroText}\nCNPJ/CPF: ${document.getElementById('qCnpj').value}\nNome: ${document.getElementById('qNome').value}\nObservação: ${document.getElementById('qObs').value}`
+        `Olá! Gostaria de um orçamento.\n\nProduto: ${document.getElementById('qProduto').value}\nAmperagem: ${document.getElementById('qAmperagem').value}\nCobre: ${document.getElementById('qCobre').value}\nPolos: ${document.getElementById('qPolos').value}\nQuantidade: ${document.getElementById('qQtd').value}\nTerra: ${terraText}\nNeutro: ${neutroText}\nCNPJ/CPF: ${document.getElementById('qCnpj').value}\nNome: ${document.getElementById('qNome').value}\nObservação: ${document.getElementById('qObs').value}`
     );
     window.open('https://wa.me/5511924898593?text=' + msg, '_blank');
 });
-
-function changeImg(thumb, src) {
-    document.querySelector('#mainProductImg img').src = src;
-    document.querySelectorAll('.product-thumb').forEach(t => t.classList.remove('active'));
-    thumb.classList.add('active');
-}
 </script>
 </body>
 </html>
